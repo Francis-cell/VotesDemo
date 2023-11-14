@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace属性指定当前映射文件和哪个接口进行映射，需要标注包的完整路径接口-->
+<mapper namespace="com.zmr.login.mapper.UserMapper">
+    <!--自定义映射规则-->
+    <resultMap id="DifUser" type="com.zmr.login.entity.User">
+        <id column="USER_ID" property="userId"></id>
+        <result column="USER_NAME" property="userName"></result>
+        <result column="USER_ACCOUNT" property="userAccount"></result>
+        <result column="EMAIL" property="email"></result>
+    </resultMap>
+    <!--id指定接口方法的名称-->
+    <insert id="insert">
+        INSERT INTO SYS_USER(USER_ACCOUNT,PASSWORD,SALT,USER_NAME,EMAIL) values (#{userAccount},#{password},#{salt},#{userName},#{email})
+    </insert>
+
+    <!--当表的字段和类的对象的属性不一致时，来自定义查询结果集的映射规则-->
+    <select id="findByUsername" resultMap="DifUser">
+        SELECT * FROM SYS_USER WHERE USER_NAME=#{userName}
+    </select>
+
+    <delete id="deleteById">
+        DELETE FROM SYS_USER WHERE USER_ID=#{userId}
+    </delete>
+
+    <update id="update">
+        UPDATE SYS_USER SET USER_ACCOUNT=#{userAccount},USER_NAME=#{userName},EMAIL=#{email} where USER_ID=#{userId}
+    </update>
+</mapper>
+
