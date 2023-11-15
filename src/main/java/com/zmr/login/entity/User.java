@@ -31,8 +31,8 @@ public class User {
     /** salt */
     private String salt;
     
-    /** mail for user */
-    private String mail;
+    /** email for user */
+    private String email;
     
     /** insert time for info */
     private Long insertTime;

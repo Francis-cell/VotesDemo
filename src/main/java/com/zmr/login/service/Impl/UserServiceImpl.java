@@ -1,9 +1,10 @@
 package com.zmr.login.service.Impl;
 
-import com.sun.xml.internal.ws.api.message.Packet;
 import com.zmr.login.entity.User;
 import com.zmr.login.mapper.UserMapper;
 import com.zmr.login.service.IUserService;
+import com.zmr.main.exception.InsertException;
+import com.zmr.main.exception.UsernameDuplicatedException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.DigestUtils;
@@ -27,7 +28,7 @@ public class UserServiceImpl implements IUserService {
         User result = userMapper.findByUserName(user.getUserName());
         // if the result is not null, throw Exception
         if (result != null) {
-            throw new RuntimeException("The user name has occupied.");
+            throw new UsernameDuplicatedException("The user name has occupied.");
         } else {
             // start login
             String oldPassword = user.getPassword();
@@ -39,7 +40,7 @@ public class UserServiceImpl implements IUserService {
             // insert user into user table
             Integer rows = userMapper.insert(user);
             if (rows != 1) {
-                throw new RuntimeException("User register failed.");
+                throw new InsertException("User register failed.");
             }
         }
     }
