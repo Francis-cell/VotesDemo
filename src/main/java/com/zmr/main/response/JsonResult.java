@@ -1,4 +1,4 @@
-package com.zmr.login.common.response;
+package com.zmr.main.response;
 
 import lombok.Data;
 

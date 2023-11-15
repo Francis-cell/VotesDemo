@@ -1,4 +1,4 @@
-package com.zmr.login.common.exception;
+package com.zmr.main.exception;
 
 /**
  * @author franciszmr
