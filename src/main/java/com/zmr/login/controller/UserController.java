@@ -4,9 +4,9 @@ import com.zmr.login.entity.User;
 import com.zmr.login.mapper.UserMapper;
 import com.zmr.login.service.IUserService;
 import com.zmr.main.exception.InsertException;
+import com.zmr.main.exception.UserNotFoundException;
 import com.zmr.main.exception.UsernameDuplicatedException;
 import com.zmr.main.response.ResponseResult;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -18,7 +18,7 @@ import javax.annotation.Resource;
  * @date 2023/11/15 20:18
  * @description
  */
-@Controller
+@RestController
 @RequestMapping("/user")
 public class UserController {
     @Resource
@@ -42,6 +42,18 @@ public class UserController {
             return ResponseResult.fail(400, "user name has occupied!");
         } catch (InsertException e) {
             return ResponseResult.fail(502, "register with exception!");
+        }
+    }
+    
+    @PostMapping("/login")
+    public ResponseResult login(@RequestBody User user) {
+        try {
+            userService.login(user);
+            System.out.println("login success!");
+            // redirect to index page
+            return ResponseResult.success("Login success!");
+        } catch (UserNotFoundException e) {
+            return ResponseResult.fail(400, "Login failed!");
         }
     }
 }

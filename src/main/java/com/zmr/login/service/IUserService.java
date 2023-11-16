@@ -13,4 +13,18 @@ public interface IUserService {
      * @param user
      */
     void register(User user);
+
+
+    /**
+     * login with numberCode and Email (TODO APPEND)
+     * @param user
+     * @param numberCode
+     */
+    void login(User user, String numberCode);
+
+    /***
+     * login with userAccount and password
+     * @param user
+     */
+    void login(User user);
 }

@@ -10,6 +10,8 @@
         <result column="USER_NAME" property="userName"></result>
         <result column="USER_ACCOUNT" property="userAccount"></result>
         <result column="EMAIL" property="email"></result>
+        <result column="SALT" property="salt"></result>
+        <result column="PASSWORD" property="password"></result>
     </resultMap>
     <!--id指定接口方法的名称-->
     <insert id="insert">
@@ -19,6 +21,11 @@
     <!--当表的字段和类的对象的属性不一致时，来自定义查询结果集的映射规则-->
     <select id="findByUserName" resultMap="DifUser">
         SELECT * FROM SYS_USER WHERE USER_NAME=#{userName}
+    </select>
+
+    <!-- select salt and password by userAccount -->
+    <select id="findByUserAccount" resultMap="DifUser">
+        SELECT * FROM SYS_USER WHERE USER_ACCOUNT = #{userAccount};
     </select>
 
     <delete id="deleteById">

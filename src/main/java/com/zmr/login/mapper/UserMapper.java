@@ -38,4 +38,11 @@ public interface UserMapper {
      * @return the affected lines.
      */
     Integer update(User user);
+
+    /**
+     * find a user by userAccount
+     * @param userAccount
+     * @return if the user is found, it will return the user, else return null.
+     */
+    User findByUserAccount(String userAccount);
 }
