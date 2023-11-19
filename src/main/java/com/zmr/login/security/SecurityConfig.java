@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler;
 
 /**
  * @author franciszmr
@@ -20,52 +21,48 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @Order(1)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private static final String LOGIN_PAGE_URL = "/login.html";
-    
+
     @Bean
     PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    
+
     @Override
     protected void configure(HttpSecurity http)
             throws Exception {
         http
-             .authorizeRequests()
-                .antMatchers("/login.html","/html/**", "/css/**", "/js/**", "/JQuery/**", "/pictures/**").permitAll()
+                .authorizeRequests()
+                .antMatchers("/html/**", "/css/**", "/js/**", "/JQuery/**", "/pictures/**")
+                .permitAll()
+                .antMatchers("/login.html")
+                .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
-             .formLogin()
+                .formLogin()
                 .loginPage(LOGIN_PAGE_URL)
                 .loginProcessingUrl("/user/login")
-                .defaultSuccessUrl("/index")
+                .successHandler(successHandler())
                 .failureUrl(LOGIN_PAGE_URL)
                 .usernameParameter("username")
                 .passwordParameter("passwd")
                 .permitAll()
                 .and()
-             .logout()
+                .logout()
                 .and()
                 // stop csrf protect for test
-             .csrf().disable();
+                .csrf().disable();
     }
 
-    ///**
-    // * Using memory for user storage.
-    // * @param auth
-    // * @throws Exception
-    // */
-    //@Override
-    //protected void configure(AuthenticationManagerBuilder auth) 
-    //        throws Exception {
-    //    auth
-    //            .inMemoryAuthentication()
-    //            .withUser("wangZiDianXia")
-    //            .password(passwordEncoder().encode("handsome"))
-    //            .authorities("ROLE_USER")
-    //            .and()
-    //            .withUser("gongZhuDianXia")
-    //            .password(passwordEncoder().encode("grace"))
-    //            .authorities("ROLE_USER");
-    //}
+    /**
+     * The web and the back is a whole. Using this way to redirect page.
+     * @return
+     */
+    SavedRequestAwareAuthenticationSuccessHandler successHandler() {
+        SavedRequestAwareAuthenticationSuccessHandler handler =
+                new SavedRequestAwareAuthenticationSuccessHandler();
+        handler.setDefaultTargetUrl("/index");
+        handler.setTargetUrlParameter("target");
+        return handler;
+    }
 }

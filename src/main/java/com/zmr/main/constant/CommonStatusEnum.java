@@ -8,6 +8,7 @@ import lombok.Getter;
  * @date 2023/11/15 20:41
  * @description common enum
  */
+@Getter
 public enum CommonStatusEnum {
     /** success */
     SUCCESS(200, "success"),
@@ -15,9 +16,7 @@ public enum CommonStatusEnum {
     /** fail */
     FAIL(400, "fail");
     
-    @Getter
     private int code;
-    @Getter
     private String value;
     
     CommonStatusEnum(int code, String value) {
