@@ -29,6 +29,7 @@ public class UserController {
     
     @GetMapping("/{userName}")
     public ResponseResult findByUserName(@PathVariable String userName) {
+        System.out.println("11111111");
         return ResponseResult.success(userMapper.findByUserName(userName));
     }
     

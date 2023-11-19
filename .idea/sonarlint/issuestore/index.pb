@@ -177,9 +177,11 @@ i
 9src/main/java/com/zmr/main/exception/InsertException.java,4\e\4e12775080a86bfe6b38710b7523f6432d703ece
 b
 2src/main/java/com/zmr/login/mapper/UserMapper.java,e\3\e3e07f87f3fc4133b88b881e71296d5d7eaac4fa
-7
-pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 m
 =src/main/java/com/zmr/login/service/Impl/UserServiceImpl.java,5\a\5a8d8daa5455b8861adbe471bb99d66ecf0ad8a9
 \
 ,src/main/java/com/zmr/login/entity/User.java,d\5\d558223a1cb8150492d75b117c2cf6d55ee2f44f
+\
+,.idea/inspectionProfiles/Project_Default.xml,4\9\496a238a6afa168dbaf6efd37bb459331589579c
+Q
+!src/test/java/UserMapperTest.java,9\a\9af01dc607ffff6919400d2c895f382c65a0dbc5
