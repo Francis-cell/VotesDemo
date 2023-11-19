@@ -13,10 +13,10 @@
         <p class="title">Log in</p>
         <input type="text" placeholder="Username" autofocus name="username"/>
         <i class="fa fa-user"></i>
-        <input type="password" placeholder="Password" name="passwd"/>
+        <input type="password" placeholder="Password" name="password"/>
         <i class="fa fa-key"></i>
         <a href="#">Forgot your password?</a>
-        <button>
+        <button type="submit">
             <i class="spinner"></i>
             <span class="state" name="login">Log in</span>
         </button>
@@ -49,30 +49,30 @@
     }
     
     
-    // sumit method
-    $(document).ready(function () {
-        $('form.login').submit(function (event) {
-            event.preventDefault();
-            
-            var username = $('input[name="username"]').val();
-            var password = $('input[name="passwd"]').val();
-            
-            $.ajax({
-                type: 'POST',
-                url: '/user/login',
-                contentType: 'application/json',
-                data: JSON.stringify({ "username": username, "passwd": password }),
-                success: function (response) {
-                    // alert(response.message);
-                    window.location.href = './html/index.html';
-                },
-                error: function (error) {
-                    // 登录失败的处理
-                    alert('Login failed!');
-                }
-            });
-        });
-    });
+    // // sumit method
+    // $(document).ready(function () {
+    //     $('form.login').submit(function (event) {
+    //         event.preventDefault();
+    //
+    //         var username = $('input[name="username"]').val();
+    //         var password = $('input[name="password"]').val();
+    //
+    //         $.ajax({
+    //             type: 'POST',
+    //             url: '/user/login',
+    //             contentType: 'application/json',
+    //             data: JSON.stringify({ "username": username, "password": password }),
+    //             success: function (response) {
+    //                 // alert(response.message);
+    //                 window.location.href = './html/index.html';
+    //             },
+    //             error: function (error) {
+    //                 // 登录失败的处理
+    //                 alert('Login failed!');
+    //             }
+    //         });
+    //     });
+    // });
 
 </script>
 </html>

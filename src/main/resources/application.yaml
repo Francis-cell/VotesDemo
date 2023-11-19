@@ -6,11 +6,6 @@ spring:
     username: zmr
     password: zmr123456
     url: jdbc:mysql://192.168.124.12:3306/voteDemo?serverTimezone=GMT%2b8
-  security:
-    user:
-      name: wangZiDianXia
-      password: handSome
-      roles: USER_ROLE 
   resources:
     static-locations: classpath:/static/
 mybatis:
