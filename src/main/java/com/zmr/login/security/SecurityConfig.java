@@ -17,7 +17,7 @@ import org.springframework.security.web.authentication.SavedRequestAwareAuthenti
 @EnableWebSecurity
 @Order(1)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    private static final String LOGIN_PAGE_URL = "/login.html";
+    private static final String LOGIN_PAGE_URL = "/html/login.html";
 
     @Override
     protected void configure(HttpSecurity http)
@@ -27,8 +27,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                     .antMatchers("/html/**", "/css/**", "/js/**", "/JQuery/**", "/pictures/**")
                     .permitAll()
-                    .antMatchers("/login.html")
+                    .antMatchers("/login.html", "/register.html")
                     .permitAll()
+                    .antMatchers("/user/register")
+                    .permitAll()
+                    .antMatchers("/error").permitAll()
                     .anyRequest()
                     .authenticated()
                     .and()
@@ -55,7 +58,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     SavedRequestAwareAuthenticationSuccessHandler successHandler() {
         SavedRequestAwareAuthenticationSuccessHandler handler =
                 new SavedRequestAwareAuthenticationSuccessHandler();
-        handler.setDefaultTargetUrl("/index");
+        handler.setDefaultTargetUrl("/html/index.html");
         handler.setTargetUrlParameter("target");
         return handler;
     }
