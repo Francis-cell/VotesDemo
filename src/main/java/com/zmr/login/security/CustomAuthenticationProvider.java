@@ -1,11 +1,13 @@
 package com.zmr.login.security;
 
+import com.zmr.login.entity.User;
 import com.zmr.login.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.util.DigestUtils;
 
@@ -28,21 +30,20 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         String username = authentication.getPrincipal().toString();
         String password = authentication.getCredentials().toString();
 
-        //String lastPassword = "";
-        //User byUserAccount = userMapper.findByUserAccount(username);
-        //if (byUserAccount == null) {
-        //    throw new UserNotFoundException("User account can't find!");
-        //} else {
-        //    String salt = byUserAccount.getSalt();
-        //    String truePassword = byUserAccount.getPassword();
-        //    lastPassword = getMd5Password(password, salt);
-        //    if (!lastPassword.equals(truePassword)) {
-        //        throw new UserNotFoundException("User password error!");
-        //    }
-        //}
+        String lastPassword = "";
+        User byUserAccount = userMapper.findByUserAccount(username);
+        if (byUserAccount == null) {
+            throw new UsernameNotFoundException("User account can't find!");
+        } else {
+            String salt = byUserAccount.getSalt();
+            String truePassword = byUserAccount.getPassword();
+            lastPassword = getMd5Password(password, salt);
+            if (!lastPassword.equals(truePassword)) {
+                throw new UsernameNotFoundException("User password error!");
+            }
+        }
 
-        //return new UsernamePasswordAuthenticationToken(username, lastPassword, new ArrayList<>());
-        return new UsernamePasswordAuthenticationToken(username, password, new ArrayList<>());
+        return new UsernamePasswordAuthenticationToken(username, lastPassword, new ArrayList<>());
     }
 
     @Override

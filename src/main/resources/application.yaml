@@ -5,9 +5,15 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     username: zmr
     password: zmr123456
-    url: jdbc:mysql://192.168.124.12:3306/voteDemo?serverTimezone=GMT%2b8
-  resources:
-    static-locations: classpath:/static/
+    url: jdbc:mysql://192.168.124.16:3306/voteDemo?serverTimezone=GMT%2b8
+  security:
+    user:
+      name: wangZiDianXia
+      password: handsome123
+      roles: USER_ROLE
+  web:
+    resources:
+      static-locations: classpath:/static/
 mybatis:
   mapper-locations: classpath:mapper/*.xml # scan all mybatis XML files
   configuration:
