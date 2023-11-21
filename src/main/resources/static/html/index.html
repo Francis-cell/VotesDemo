@@ -2,9 +2,69 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>内部页面</title>
+    <title>Index page</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <script src="../JQuery/jquery-3.7.1.min.js"></script>
+    <script type="application/javascript" src="../js/index.js"></script>
 </head>
 <body>
-    <h3>登录成功！</h3>
+    <div id="index">
+        <!-- left to show login user and other information -->
+        <div id="sideBar">
+            <!-- user information -->
+            <div class="user">
+                <img class="userPicture" src="../userPictures/girl02.svg" alt="user picture">
+                <span class="userName"> userName </span>
+                <span class="userEmail"> user@example.com </span>
+            </div>
+
+            <!-- sidebar menu -->
+            <div class="sidebar-menu">
+                <!-- vote -->
+                <a href="#" class="sidebar-menu__link active" data-target="vote">vote</a>
+                <!-- logout -->
+                <a href="#" class="sidebar-menu__link" data-target="logout">logout</a>
+            </div>
+        </div>
+
+
+        <!-- main page -->
+        <div class="main">
+            <!-- main header -->
+            <div class="main-header">
+                <!-- main header title-->
+                <div class="main-header__title"> Choose the public you like to start vote, have fun here. </div>
+                <!-- main header nav-->
+                <div class="main-header-nav">
+                    <!-- all -->
+                    <a href="#" class="nav-item active">All</a>
+                    <!-- favorite -->
+                    <a href="#" class="nav-item">Favorite</a>
+                    <!-- life -->
+                    <a href="#" class="nav-item">Lift</a>
+                    <!-- travel -->
+                    <a href="#" class="nav-item">Travel</a>
+                    <!-- books -->
+                    <a href="#" class="nav-item">Books</a>
+                    <!-- transportation -->
+                    <a href="#" class="nav-item">Transportation</a>
+                </div>
+            </div>
+            <!-- main content -->
+            <div class="main-content">
+                <!-- cards -->
+                <div class="card card-img card-1"></div>
+                <div class="card card-img card-2"></div>
+                <div class="card card-img card-3"></div>
+                <div class="card card-img card-4"></div>
+                <div class="card card-img card-5"></div>
+                <div class="card card-img card-6"></div>
+            </div>
+        </div>
+    </div>
 </body>
+<script src="../js/index.js"></script>
+<script>
+    //
+</script>
 </html>

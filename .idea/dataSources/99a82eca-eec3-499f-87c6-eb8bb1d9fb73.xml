@@ -1,7 +1,127 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="raspberryPi">
   <database-model serializer="dbm" dbms="MARIADB" family-id="MARIADB" format-version="4.49">
-    <root id="1"/>
+    <root id="1">
+      <DefaultCasing>exact</DefaultCasing>
+      <DefaultEngine>InnoDB</DefaultEngine>
+      <Grants>|root||mysql|localhost|ALTER|G
+|root||root|localhost|ALTER|G
+|root||zmr||ALTER|G
+|root||mysql|localhost|ALTER ROUTINE|G
+|root||root|localhost|ALTER ROUTINE|G
+|root||zmr||ALTER ROUTINE|G
+|root||mysql|localhost|BINLOG ADMIN|G
+|root||root|localhost|BINLOG ADMIN|G
+|root||zmr||BINLOG ADMIN|G
+|root||mysql|localhost|BINLOG MONITOR|G
+|root||root|localhost|BINLOG MONITOR|G
+|root||zmr||BINLOG MONITOR|G
+|root||mysql|localhost|BINLOG REPLAY|G
+|root||root|localhost|BINLOG REPLAY|G
+|root||zmr||BINLOG REPLAY|G
+|root||mysql|localhost|CONNECTION ADMIN|G
+|root||root|localhost|CONNECTION ADMIN|G
+|root||zmr||CONNECTION ADMIN|G
+|root||mysql|localhost|CREATE|G
+|root||root|localhost|CREATE|G
+|root||zmr||CREATE|G
+|root||mysql|localhost|CREATE ROUTINE|G
+|root||root|localhost|CREATE ROUTINE|G
+|root||zmr||CREATE ROUTINE|G
+|root||mysql|localhost|CREATE TABLESPACE|G
+|root||root|localhost|CREATE TABLESPACE|G
+|root||zmr||CREATE TABLESPACE|G
+|root||mysql|localhost|CREATE TEMPORARY TABLES|G
+|root||root|localhost|CREATE TEMPORARY TABLES|G
+|root||zmr||CREATE TEMPORARY TABLES|G
+|root||mysql|localhost|CREATE USER|G
+|root||root|localhost|CREATE USER|G
+|root||zmr||CREATE USER|G
+|root||mysql|localhost|CREATE VIEW|G
+|root||root|localhost|CREATE VIEW|G
+|root||zmr||CREATE VIEW|G
+|root||mysql|localhost|DELETE|G
+|root||root|localhost|DELETE|G
+|root||zmr||DELETE|G
+|root||mysql|localhost|DELETE HISTORY|G
+|root||root|localhost|DELETE HISTORY|G
+|root||zmr||DELETE HISTORY|G
+|root||mysql|localhost|DROP|G
+|root||root|localhost|DROP|G
+|root||zmr||DROP|G
+|root||mysql|localhost|EVENT|G
+|root||root|localhost|EVENT|G
+|root||zmr||EVENT|G
+|root||mysql|localhost|EXECUTE|G
+|root||root|localhost|EXECUTE|G
+|root||zmr||EXECUTE|G
+|root||mysql|localhost|FEDERATED ADMIN|G
+|root||root|localhost|FEDERATED ADMIN|G
+|root||zmr||FEDERATED ADMIN|G
+|root||mysql|localhost|FILE|G
+|root||root|localhost|FILE|G
+|root||zmr||FILE|G
+|root||mysql|localhost|INDEX|G
+|root||root|localhost|INDEX|G
+|root||zmr||INDEX|G
+|root||mysql|localhost|INSERT|G
+|root||root|localhost|INSERT|G
+|root||zmr||INSERT|G
+|root||mysql|localhost|LOCK TABLES|G
+|root||root|localhost|LOCK TABLES|G
+|root||zmr||LOCK TABLES|G
+|root||mysql|localhost|PROCESS|G
+|root||root|localhost|PROCESS|G
+|root||zmr||PROCESS|G
+|root||mysql|localhost|READ_ONLY ADMIN|G
+|root||root|localhost|READ_ONLY ADMIN|G
+|root||zmr||READ_ONLY ADMIN|G
+|root||mysql|localhost|REFERENCES|G
+|root||root|localhost|REFERENCES|G
+|root||zmr||REFERENCES|G
+|root||mysql|localhost|RELOAD|G
+|root||root|localhost|RELOAD|G
+|root||zmr||RELOAD|G
+|root||mysql|localhost|REPLICATION MASTER ADMIN|G
+|root||root|localhost|REPLICATION MASTER ADMIN|G
+|root||zmr||REPLICATION MASTER ADMIN|G
+|root||mysql|localhost|REPLICATION SLAVE|G
+|root||root|localhost|REPLICATION SLAVE|G
+|root||zmr||REPLICATION SLAVE|G
+|root||mysql|localhost|REPLICATION SLAVE ADMIN|G
+|root||root|localhost|REPLICATION SLAVE ADMIN|G
+|root||zmr||REPLICATION SLAVE ADMIN|G
+|root||mysql|localhost|SELECT|G
+|root||root|localhost|SELECT|G
+|root||zmr||SELECT|G
+|root||mysql|localhost|SET USER|G
+|root||root|localhost|SET USER|G
+|root||zmr||SET USER|G
+|root||mysql|localhost|SHOW DATABASES|G
+|root||root|localhost|SHOW DATABASES|G
+|root||zmr||SHOW DATABASES|G
+|root||mysql|localhost|SHOW VIEW|G
+|root||root|localhost|SHOW VIEW|G
+|root||zmr||SHOW VIEW|G
+|root||mysql|localhost|SHUTDOWN|G
+|root||root|localhost|SHUTDOWN|G
+|root||zmr||SHUTDOWN|G
+|root||mysql|localhost|SLAVE MONITOR|G
+|root||root|localhost|SLAVE MONITOR|G
+|root||zmr||SLAVE MONITOR|G
+|root||mysql|localhost|SUPER|G
+|root||root|localhost|SUPER|G
+|root||zmr||SUPER|G
+|root||mysql|localhost|TRIGGER|G
+|root||root|localhost|TRIGGER|G
+|root||zmr||TRIGGER|G
+|root||mysql|localhost|UPDATE|G
+|root||root|localhost|UPDATE|G
+|root||zmr||UPDATE|G
+|root||mysql|localhost|grant option|G
+|root||root|localhost|grant option|G</Grants>
+      <ServerVersion>10.5.19</ServerVersion>
+    </root>
     <collation id="2" parent="1" name="armscii8_bin">
       <Charset>armscii8</Charset>
     </collation>
@@ -1019,6 +1139,8 @@
     </schema>
     <schema id="327" parent="1" name="voteDemo">
       <Current>1</Current>
+      <IntrospectionTimestamp>2023-11-22.05:03:58</IntrospectionTimestamp>
+      <LocalIntrospectionTimestamp>2023-11-21.13:03:59</LocalIntrospectionTimestamp>
       <CollationName>utf8_general_ci</CollationName>
     </schema>
     <user id="328" parent="1" name="mariadb.sys">
@@ -1030,15 +1152,31 @@
     <user id="330" parent="1" name="root">
       <Host>localhost</Host>
     </user>
-    <user id="331" parent="1" name="zmr">
-      <Host>%</Host>
-    </user>
-    <table id="332" parent="327" name="FAVORITE_FRUITS"/>
-    <table id="333" parent="327" name="FRUITS"/>
-    <table id="334" parent="327" name="FRUITS_VOTES"/>
-    <table id="335" parent="327" name="SYS_INFO"/>
-    <table id="336" parent="327" name="SYS_USER"/>
-    <table id="337" parent="327" name="VOTES_INFO"/>
+    <user id="331" parent="1" name="zmr"/>
+    <table id="332" parent="327" name="FAVORITE_FRUITS">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8_general_ci</CollationName>
+    </table>
+    <table id="333" parent="327" name="FRUITS">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8_general_ci</CollationName>
+    </table>
+    <table id="334" parent="327" name="FRUITS_VOTES">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8_general_ci</CollationName>
+    </table>
+    <table id="335" parent="327" name="SYS_INFO">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8_general_ci</CollationName>
+    </table>
+    <table id="336" parent="327" name="SYS_USER">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8_general_ci</CollationName>
+    </table>
+    <table id="337" parent="327" name="VOTES_INFO">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8_general_ci</CollationName>
+    </table>
     <column id="338" parent="332" name="ID">
       <AutoIncrement>1</AutoIncrement>
       <Comment>ID</Comment>
@@ -1069,227 +1207,257 @@
       <DefaultExpression>current_timestamp()</DefaultExpression>
       <Position>5</Position>
     </column>
-    <index id="343" parent="332" name="SYS_USER_ACCOUNT">
+    <index id="343" parent="332" name="PRIMARY">
+      <ColNames>ID</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="344" parent="332" name="SYS_USER_ACCOUNT">
       <ColNames>SYS_USER_ACCOUNT</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="344" parent="332" name="PRIMARY">
+    <key id="345" parent="332" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
-      <UnderlyingIndexColNames>ID</UnderlyingIndexColNames>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <key id="345" parent="332" name="SYS_USER_ACCOUNT">
+    <key id="346" parent="332" name="SYS_USER_ACCOUNT">
       <UnderlyingIndexName>SYS_USER_ACCOUNT</UnderlyingIndexName>
     </key>
-    <column id="346" parent="333" name="FRUIT_ID">
+    <column id="347" parent="333" name="FRUIT_ID">
       <AutoIncrement>1</AutoIncrement>
       <Comment>水果ID</Comment>
       <DasType>int(10)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="347" parent="333" name="FRUIT_NAME">
+    <column id="348" parent="333" name="FRUIT_NAME">
       <Comment>水果名称</Comment>
       <DasType>varchar(100)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="348" parent="333" name="INSERT_TIME">
+    <column id="349" parent="333" name="INSERT_TIME">
       <Comment>插入时间</Comment>
       <DasType>timestamp|0s</DasType>
       <DefaultExpression>current_timestamp()</DefaultExpression>
       <Position>3</Position>
     </column>
-    <column id="349" parent="333" name="UPDATE_TIME">
+    <column id="350" parent="333" name="UPDATE_TIME">
       <Comment>更新时间</Comment>
       <DasType>timestamp|0s</DasType>
       <DefaultExpression>current_timestamp()</DefaultExpression>
       <Position>4</Position>
     </column>
-    <key id="350" parent="333" name="PRIMARY">
+    <index id="351" parent="333" name="PRIMARY">
+      <ColNames>FRUIT_ID</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="352" parent="333" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
-      <UnderlyingIndexColNames>FRUIT_ID</UnderlyingIndexColNames>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="351" parent="334" name="FRUIT_ID">
+    <column id="353" parent="334" name="FRUIT_ID">
       <AutoIncrement>1</AutoIncrement>
       <Comment>水果ID</Comment>
       <DasType>int(10)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="352" parent="334" name="NUMBER_OF_VOTES">
+    <column id="354" parent="334" name="NUMBER_OF_VOTES">
       <Comment>获得的票数</Comment>
       <DasType>int(10)|0s</DasType>
       <DefaultExpression>0</DefaultExpression>
       <Position>2</Position>
     </column>
-    <column id="353" parent="334" name="INSERT_TIME">
+    <column id="355" parent="334" name="INSERT_TIME">
       <Comment>插入时间</Comment>
       <DasType>timestamp|0s</DasType>
       <DefaultExpression>current_timestamp()</DefaultExpression>
       <Position>3</Position>
     </column>
-    <column id="354" parent="334" name="UPDATE_TIME">
+    <column id="356" parent="334" name="UPDATE_TIME">
       <Comment>更新时间</Comment>
       <DasType>timestamp|0s</DasType>
       <DefaultExpression>current_timestamp()</DefaultExpression>
       <Position>4</Position>
     </column>
-    <key id="355" parent="334" name="PRIMARY">
+    <index id="357" parent="334" name="PRIMARY">
+      <ColNames>FRUIT_ID</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="358" parent="334" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
-      <UnderlyingIndexColNames>FRUIT_ID</UnderlyingIndexColNames>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="356" parent="335" name="ID">
+    <column id="359" parent="335" name="ID">
       <AutoIncrement>1</AutoIncrement>
       <Comment>ID</Comment>
       <DasType>int(10)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="357" parent="335" name="DESC">
+    <column id="360" parent="335" name="DESC">
       <Comment>描述（例如：用户总数）</Comment>
       <DasType>varchar(100)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="358" parent="335" name="FUNC">
+    <column id="361" parent="335" name="FUNC">
       <Comment>功能描述（例如：用户总数计数）</Comment>
       <DasType>varchar(100)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="359" parent="335" name="FUNC_DETAILS">
+    <column id="362" parent="335" name="FUNC_DETAILS">
       <Comment>功能描述详情对应的值</Comment>
       <DasType>varchar(50)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="360" parent="335" name="INSERT_TIME">
+    <column id="363" parent="335" name="INSERT_TIME">
       <Comment>插入时间</Comment>
       <DasType>timestamp|0s</DasType>
       <DefaultExpression>current_timestamp()</DefaultExpression>
       <Position>5</Position>
     </column>
-    <column id="361" parent="335" name="UPDATE_TIME">
+    <column id="364" parent="335" name="UPDATE_TIME">
       <Comment>更新时间</Comment>
       <DasType>timestamp|0s</DasType>
       <DefaultExpression>current_timestamp()</DefaultExpression>
       <Position>6</Position>
     </column>
-    <key id="362" parent="335" name="PRIMARY">
+    <index id="365" parent="335" name="PRIMARY">
+      <ColNames>ID</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="366" parent="335" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
-      <UnderlyingIndexColNames>ID</UnderlyingIndexColNames>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="363" parent="336" name="USER_ID">
-      <AutoIncrement>1</AutoIncrement>
+    <column id="367" parent="336" name="USER_ID">
+      <AutoIncrement>22</AutoIncrement>
       <Comment>用户ID</Comment>
       <DasType>int(10)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="364" parent="336" name="USER_NAME">
+    <column id="368" parent="336" name="USER_NAME">
       <Comment>用户名</Comment>
       <DasType>varchar(50)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>2</Position>
     </column>
-    <column id="365" parent="336" name="USER_ACCOUNT">
+    <column id="369" parent="336" name="USER_ACCOUNT">
       <Comment>用户账户</Comment>
       <DasType>varchar(100)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>3</Position>
     </column>
-    <column id="366" parent="336" name="PASSWORD">
+    <column id="370" parent="336" name="PASSWORD">
       <Comment>用户密码</Comment>
       <DasType>varchar(100)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="367" parent="336" name="SALT">
+    <column id="371" parent="336" name="SALT">
       <Comment>盐值</Comment>
       <DasType>varchar(100)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>5</Position>
     </column>
-    <column id="368" parent="336" name="EMAIL">
+    <column id="372" parent="336" name="EMAIL">
       <Comment>用户邮箱</Comment>
       <DasType>varchar(100)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>6</Position>
     </column>
-    <column id="369" parent="336" name="INSERT_TIME">
+    <column id="373" parent="336" name="INSERT_TIME">
       <Comment>插入时间</Comment>
       <DasType>timestamp|0s</DasType>
       <DefaultExpression>current_timestamp()</DefaultExpression>
       <Position>7</Position>
     </column>
-    <column id="370" parent="336" name="UPDATE_TIME">
+    <column id="374" parent="336" name="UPDATE_TIME">
       <Comment>更新时间</Comment>
       <DasType>timestamp|0s</DasType>
       <DefaultExpression>current_timestamp()</DefaultExpression>
       <Position>8</Position>
     </column>
-    <index id="371" parent="336" name="USER_NAME">
+    <index id="375" parent="336" name="PRIMARY">
+      <ColNames>USER_ID</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="376" parent="336" name="USER_NAME">
       <ColNames>USER_NAME</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="372" parent="336" name="USER_ACCOUNT">
+    <index id="377" parent="336" name="USER_ACCOUNT">
       <ColNames>USER_ACCOUNT</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="373" parent="336" name="PRIMARY">
+    <key id="378" parent="336" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
-      <UnderlyingIndexColNames>USER_ID</UnderlyingIndexColNames>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <key id="374" parent="336" name="USER_NAME">
+    <key id="379" parent="336" name="USER_NAME">
       <UnderlyingIndexName>USER_NAME</UnderlyingIndexName>
     </key>
-    <key id="375" parent="336" name="USER_ACCOUNT">
+    <key id="380" parent="336" name="USER_ACCOUNT">
       <UnderlyingIndexName>USER_ACCOUNT</UnderlyingIndexName>
     </key>
-    <column id="376" parent="337" name="ID">
+    <column id="381" parent="337" name="ID">
       <AutoIncrement>1</AutoIncrement>
       <Comment>ID</Comment>
       <DasType>int(10)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="377" parent="337" name="DESC">
+    <column id="382" parent="337" name="DESC">
       <Comment>投票类型描述（例如：最爱水果投票）</Comment>
       <DasType>varchar(100)|0s</DasType>
       <Position>2</Position>
     </column>
-    <column id="378" parent="337" name="FUNC">
+    <column id="383" parent="337" name="FUNC">
       <Comment>功能描述（例如：已经投票用户计数）</Comment>
       <DasType>varchar(100)|0s</DasType>
       <Position>3</Position>
     </column>
-    <column id="379" parent="337" name="FUNC_DETAILS">
+    <column id="384" parent="337" name="FUNC_DETAILS">
       <Comment>功能描述详情对应的值</Comment>
       <DasType>varchar(50)|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
-    <column id="380" parent="337" name="INSERT_TIME">
+    <column id="385" parent="337" name="INSERT_TIME">
       <Comment>插入时间</Comment>
       <DasType>timestamp|0s</DasType>
       <DefaultExpression>current_timestamp()</DefaultExpression>
       <Position>5</Position>
     </column>
-    <column id="381" parent="337" name="UPDATE_TIME">
+    <column id="386" parent="337" name="UPDATE_TIME">
       <Comment>更新时间</Comment>
       <DasType>timestamp|0s</DasType>
       <DefaultExpression>current_timestamp()</DefaultExpression>
       <Position>6</Position>
     </column>
-    <key id="382" parent="337" name="PRIMARY">
+    <index id="387" parent="337" name="PRIMARY">
+      <ColNames>ID</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="388" parent="337" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
-      <UnderlyingIndexColNames>ID</UnderlyingIndexColNames>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
   </database-model>
 </dataSource>
