@@ -46,15 +46,25 @@ $(document).ready(function () {
      */
     function cardClick() {
         // get card class
-        $(".card").on("click", function (event) {
+        $(".card").off("click").on("click", function (event) {
+            // event.stopPropagation();
             // prevent default event
             event.preventDefault();
             // get the link click now
-            $(this).data("target");
-            // remove all active class
-            $(".card").removeClass("clicked");
-            // add 'active' class to target
-            $(this).addClass("clicked");
+            let $target = $(this);
+
+            if (!$target.hasClass("clicked")) {
+                $(".main-content").addClass("expanded");
+                $target.addClass("clicked");
+            }
+            else {
+                $target.removeClass("clicked");
+                $(".main-content").removeClass("expanded");
+            }
+
+            // // 使用 toggleClass 切换 clicked 类的状态
+            // $(".main-content").toggleClass("expanded", !$target.hasClass("clicked"));
+            // $target.toggleClass("clicked");
         });
     }
 });

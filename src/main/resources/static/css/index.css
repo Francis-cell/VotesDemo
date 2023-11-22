@@ -189,12 +189,55 @@ body {
     }
 }
 
+.card-img {
+    /* 定义了一个替换元素的内容应如何适应到其使用的高度和宽度 */
+    object-fit: cover;
+    /* 定义了背景图片的大小 */
+    background-size: cover;
+    /* 定义了背景图片的位置 */
+    background-position: center;
+}
+
 .card.clicked {
     position: absolute;
-    width: 500px;
-    height: 600px;
+    width: 400px;
+    height: 400px;
     z-index: 2;
 }
+
+.card.active {
+    grid-column: 1;
+    grid-column-end: 5;
+    grid-row: 1;
+    grid-row-end: 5;
+    z-index: 20;
+    aspect-ratio: 1/1;
+
+    @media (max-width: 480px) {
+        grid-column-end: 4;
+        aspect-ratio: 2/1;
+    }
+}
+
+.main-content.expanded .card:not(.clicked) {
+    /* 透明度(这里的案例表示 不透明度为40%；透明度为 60%；) */
+    opacity: 0.4;
+    /* 它用于设置元素及其子元素不会与鼠标或触摸设备产生交互作用 */
+    pointer-events: none;
+    aspect-ratio: 3/1;
+    /* 指定了元素应开始放置的网格列的索引。值 3 表示元素将从网格的第 3 列开始放置 */
+    grid-column-start: 3;
+
+    @media (max-width: 480px) {
+        aspect-ratio: 1;
+        grid-column-start: auto;
+    }
+}
+
+.main-content.expanded .card.active {
+
+}
+
 
 .card-1 {
     background-color: #58aaea;
