@@ -1,0 +1,126 @@
+body {
+    --background-color: hsl(180, 20%, 90%);
+}
+
+.vote-content {
+    display: flex;
+    /*
+        nowrap（默认值）：所有子元素在一行上排列，可能会溢出容器;
+        wrap：子元素在多行上排列，第一行在上方，第二行在下方，依此类推;
+        wrap-reverse：子元素在多行上排列，但是反转方向，第一行在下方，第二行在上方，依此类推;
+    */
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.wrap {
+    margin: 2rem;
+    /*
+        flat（默认值）：子元素在进行 3D 变换时会被扁平化，不会保持其 3D 位置;
+        preserve-3d：子元素在进行 3D 变换时会保持其 3D 位置，不会被扁平化;
+    */
+    transform-style: preserve-3d;
+    /*
+        perspective(value)：设置元素的透视距离。透视距离决定了观察者与 3D 元素之间的距离，从而影响到透视效果。
+    */
+    transform: perspective(100rem);
+
+    cursor: pointer;
+}
+
+.container {
+    /* 变量的值 */
+    --rX: 0;
+    --rY: 0;
+    --bX: 50%;
+    --bY: 80%;
+
+    width: 40rem;
+    height: 0;
+    /*border: 1px solid var(--background-color);*/
+    border-radius: 1.6rem;
+    padding: 4rem;
+
+    display: flex;
+    align-items: flex-end;
+
+    position: relative;
+    /*
+            主要用于在 3D 空间中对元素进行旋转变换;
+            rotateX(calc(var(--rX) * 1deg))：这部分代码表示绕 X 轴旋转元素。var(--rX) 表示从自定义属性 --rX 中获取值，
+        calc(var(--rX) * 1deg) 表示将该值乘以 1deg（度数），这样就能动态地改变元素绕 X 轴的旋转角度;
+            rotateY(calc(var(--rY) * 1deg))：这部分代码表示绕 Y 轴旋转元素，同样使用了自定义属性 --rY 的值，并将其乘以 1deg;
+    */
+    transform: rotateX(calc(var(--rX) * 1deg)) rotateY(calc(var(--rY) * 1deg));
+
+    background: linear-gradient(hsla(0, 0%, 100%, .1), hsla(0, 0%, 100%, .1)), url("https://images.unsplash.com/photo-1559113513-d5e09c78b9dd?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=1080&fit=max&ixid=eyJhcHBfaWQiOjF9");
+    background-position: var(--bX) var(--bY);
+    background-size: 40rem auto;
+    box-shadow: 0 0 3rem .5rem hsla(0, 0%, 0%, .2);
+
+    transition: transform .6s 1s;
+}
+
+/*.container::before,*/
+/*.container::after {*/
+/*    content: "";*/
+
+/*    width: 2rem;*/
+/*    height: 2rem;*/
+/*    border: 1px solid #fff;*/
+
+/*    position: absolute;*/
+/*    z-index: 2;*/
+
+/*    opacity: .3;*/
+/*    transition: .3s;*/
+/*}*/
+
+/*.container::before {*/
+/*    top: 2rem;*/
+/*    right: 2rem;*/
+
+/*    border-bottom-width: 0;*/
+/*    border-left-width: 0;*/
+/*}*/
+
+/*.container::after {*/
+/*    bottom: 2rem;*/
+/*    left: 2rem;*/
+
+/*    border-top-width: 0;*/
+/*    border-right-width: 0;*/
+/*}*/
+
+.container--active {
+    transition: none;
+}
+
+.container--2 {
+    /*filter: hue-rotate(80deg) saturate(140%);*/
+}
+
+.container--3 {
+    /*filter: hue-rotate(160deg) saturate(140%);*/
+}
+
+.container p {
+    color: hsla(0, 0%, 100%, .6);
+    font-size: 1rem;
+}
+
+/*.wrap:hover .container::before,*/
+/*.wrap:hover .container::after {*/
+/*    width: calc(100% - 6rem);*/
+/*    height: calc(100% - 6rem);*/
+/*}*/
+
+.abs-site-link {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    color: hsla(0, 0%, 0%, .6);
+    font-size: 1.6rem;
+}
