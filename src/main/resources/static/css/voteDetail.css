@@ -100,11 +100,11 @@ body {
 }
 
 .container--2 {
-    filter: hue-rotate(80deg) saturate(140%);
+    /*filter: hue-rotate(80deg) saturate(140%);*/
 }
 
 .container--3 {
-    filter: hue-rotate(160deg) saturate(140%);
+    /*filter: hue-rotate(160deg) saturate(140%);*/
 }
 
 .container p {
@@ -127,9 +127,72 @@ body {
 }
 
 
-/* =============================  ============================ */
+/* ============================= wrap ============================ */
+/* generate the filter animation */
+@keyframes filterAnimation  {
+    0% {
+        filter: hue-rotate(0deg) saturate(140%);
+    }
+
+    10% {
+        filter: hue-rotate(32deg) saturate(140%);
+    }
+
+    20% {
+        filter: hue-rotate(64deg) saturate(140%);
+    }
+
+    30% {
+        filter: hue-rotate(96deg) saturate(140%);
+    }
+
+    40% {
+        filter: hue-rotate(128deg) saturate(140%);
+    }
+
+    50% {
+        filter: hue-rotate(160deg) saturate(140%);
+    }
+
+    60% {
+        filter: hue-rotate(128deg) saturate(140%);
+    }
+
+    70% {
+        filter: hue-rotate(96deg) saturate(140%);
+    }
+
+    80% {
+        filter: hue-rotate(64deg) saturate(140%);
+    }
+
+    90% {
+        filter: hue-rotate(32deg) saturate(140%);
+    }
+
+    100% {
+        filter: hue-rotate(0deg) saturate(140%);
+    }
+}
+
+.wrap:hover .container {
+    opacity: 0.4;
+    transition: opacity 0.6s;
+    animation: filterAnimation 5s infinite;
+}
+
 .wrap:hover .overlay {
     opacity: 1;
+    transition: opacity 0.6s;
+}
+
+.wrap .drawer {
+    display: none;
+    color: black;
+    border-radius: 28px;
+    width: 348px;
+    height: 112px;
+    z-index: 2;
 }
 
 /* add button style */
@@ -140,19 +203,24 @@ body {
     right: 0;
     transform: translate(0, -50%);
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     /* 用于设置布局容器中子元素之间间隙的属性 */
-    gap: 10px;
+    gap: 20px;
 }
 
 /* add btn style */
 .btn {
     padding: 8px 16px;
     cursor: pointer;
-    background-color: #3498db;
+    background-color: #81c0f1;
     color: #FFFFFF;
     border: none;
-    border-radius: 4px;
+    border-radius: 10px;
+}
+
+.btn:hover {
+    transform: scale(1.1);
+    transition: 0.6s;
 }
 
 /* add drawer style */

@@ -82,10 +82,6 @@ $(document).ready(function () {
                 $target.removeClass("clicked");
                 $(".main-content").removeClass("expanded");
             }
-
-            // // 使用 toggleClass 切换 clicked 类的状态
-            // $(".main-content").toggleClass("expanded", !$target.hasClass("clicked"));
-            // $target.toggleClass("clicked");
         });
     }
 
