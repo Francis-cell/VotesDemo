@@ -18,6 +18,7 @@ import org.springframework.security.web.authentication.SavedRequestAwareAuthenti
 @Order(1)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private static final String LOGIN_PAGE_URL = "/html/login.html";
+    private static final String MY_LOGIN_PAGE_URL = "/myLogin";
 
     @Override
     protected void configure(HttpSecurity http)
@@ -36,11 +37,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .authenticated()
                     .and()
                 .formLogin()
-                    .loginPage(LOGIN_PAGE_URL)
+                    //.loginPage(LOGIN_PAGE_URL)
+                    .loginPage(MY_LOGIN_PAGE_URL)
                     .loginProcessingUrl("/user/login")
                     .successHandler(successHandler())
                     .failureHandler(new CustomAuthenticationFailureHandler())
-                    .failureUrl(LOGIN_PAGE_URL)
+                    //.failureUrl(LOGIN_PAGE_URL)
+                    .failureUrl(MY_LOGIN_PAGE_URL)
                     .usernameParameter("username")
                     .passwordParameter("password")
                     .permitAll()

@@ -52,9 +52,11 @@ public class UserController {
             userService.login(user);
             System.out.println("login success!");
             // redirect to index page
+            //return "redirect:/index";
             return ResponseResult.success("Login success!");
         } catch (UserNotFoundException e) {
             return ResponseResult.fail(400, "Login failed!");
+            //return "redirect:/myLogin";
         }
     }
 }

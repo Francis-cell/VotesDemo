@@ -9,15 +9,16 @@
 </head>
 <body>
 <div class="wrapper">
-    <form class="login" action="/user/login?target=/index" method="post">
+    <form class="login" th:action="@{/user/login}" method="post">
         <p class="title">Log in</p>
 <!--        <div th:text="${SPRING_SECURITY_LAST_EXCEPTION}"></div>-->
         <input type="text" placeholder="Username" autofocus name="username"/>
         <i class="fa fa-user"></i>
-        <input type="password" placeholder="Password" name="passwd"/>
+        <input type="password" placeholder="Password" name="password"/>
         <i class="fa fa-key"></i>
         <a href="#">Forgot your password?</a>
-        <button type="button">
+        <a class="ml94" th:href="@{/html/register.html}">register</a>
+        <button type="submit">
             <i class="spinner"></i>
             <span class="state" name="login">Log in</span>
         </button>
@@ -30,12 +31,13 @@
     </p>
 </div>
 </body>
-<script>
+<script th:inline="javascript">
+    /*<![CDATA[*/
     generateBackgroundPictures();
 
     function generateBackgroundPictures() {
         // Here is script for changing login background picture.
-        let backgroundPictureFolderPath = "./pictures/";
+        let backgroundPictureFolderPath = /*[[@{/pictures/}]]*/ "/";
         let backgroundPictureUrls = [];
         for (let i = 1; i <= 9; i++) {
             backgroundPictureUrls.push("0" + i + ".jpg");
@@ -51,29 +53,30 @@
 
 
     // sumit method
-    $(document).ready(function () {
-        $('form.login').submit(function (event) {
-            event.preventDefault();
+    // $(document).ready(function () {
+    //     $('form.login').submit(function (event) {
+    //         event.preventDefault();
+    //
+    //         var username = $('input[name="username"]').val();
+    //         var password = $('input[name="passwd"]').val();
+    //
+    //         $.ajax({
+    //             type: 'POST',
+    //             url: '/user/login',
+    //             contentType: 'application/json',
+    //             data: JSON.stringify({ "username": username, "passwd": password }),
+    //             success: function (response) {
+    //                 // Here I don't use 'window.location.href' to redirect page. Replace this way with code in Spring Security.
+    //                 // window.location.href = './html/index.html';
+    //             },
+    //             error: function (error) {
+    //                 // login failed.
+    //                 alert('Login failed!');
+    //             }
+    //         });
+    //     });
+    // });
 
-            var username = $('input[name="username"]').val();
-            var password = $('input[name="passwd"]').val();
-
-            $.ajax({
-                type: 'POST',
-                url: '/user/login',
-                contentType: 'application/json',
-                data: JSON.stringify({ "username": username, "passwd": password }),
-                success: function (response) {
-                    // Here I don't use 'window.location.href' to redirect page. Replace this way with code in Spring Security. 
-                    // window.location.href = './html/index.html';
-                },
-                error: function (error) {
-                    // login failed.
-                    alert('Login failed!');
-                }
-            });
-        });
-    });
-
+    /*]]>*/
 </script>
 </html>
