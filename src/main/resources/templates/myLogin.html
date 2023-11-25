@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <title>Log in</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
-    <script th:src="@{/JQuery/jquery.min.js}"></script>
+    <script th:src="@{/JQuery/jquery-3.7.1.min.js}"></script>
     <script th:src="@{/js/login.js}"></script>
+    <script th:src="@{/js/emojiAnimation.js}"></script>
 </head>
 <body>
 <div class="wrapper">
@@ -50,33 +51,6 @@
         document.body.style.backgroundImage = "url(" + backgroundPictureFolderPath
             + backgroundPictureUrl + (")");
     }
-
-
-    // sumit method
-    // $(document).ready(function () {
-    //     $('form.login').submit(function (event) {
-    //         event.preventDefault();
-    //
-    //         var username = $('input[name="username"]').val();
-    //         var password = $('input[name="passwd"]').val();
-    //
-    //         $.ajax({
-    //             type: 'POST',
-    //             url: '/user/login',
-    //             contentType: 'application/json',
-    //             data: JSON.stringify({ "username": username, "passwd": password }),
-    //             success: function (response) {
-    //                 // Here I don't use 'window.location.href' to redirect page. Replace this way with code in Spring Security.
-    //                 // window.location.href = './html/index.html';
-    //             },
-    //             error: function (error) {
-    //                 // login failed.
-    //                 alert('Login failed!');
-    //             }
-    //         });
-    //     });
-    // });
-
     /*]]>*/
 </script>
 </html>
