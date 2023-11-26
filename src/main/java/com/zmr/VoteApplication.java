@@ -1,4 +1,4 @@
-package com.zmr.login;
+package com.zmr;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,10 +9,11 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  * @date 2023/11/14 22:50
  * @description
  */
-@SpringBootApplication(exclude = {
-        //org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class,
-        //org.springframework.boot.actuate.autoconfigure.security.servlet.ManagementWebSecurityAutoConfiguration.class
-})
+//@SpringBootApplication(exclude = {
+//        //org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class,
+//        //org.springframework.boot.actuate.autoconfigure.security.servlet.ManagementWebSecurityAutoConfiguration.class
+//})
+@SpringBootApplication(scanBasePackages = "com.zmr")
 public class VoteApplication {
     public static void main(String[] args) {
         SpringApplication.run(VoteApplication.class, args);

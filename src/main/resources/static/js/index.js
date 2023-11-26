@@ -7,6 +7,7 @@ $(document).ready(async function () {
     const userName = $(".userName");
     const userEmail = $(".userEmail");
     const logout = $(".logout");
+    const mainContent = $(".main-content")
 
 
     // sidebar link active class change event.
@@ -21,6 +22,8 @@ $(document).ready(async function () {
 
     // Generate username and user email information.
     await generateUserInfo();
+    // Generate page topics data
+    await selectAllTopicsData();
 
     /**
      * generate username and user email
@@ -61,6 +64,53 @@ $(document).ready(async function () {
             window.location.href = "/myLogin";
         });
     }
+
+
+    /**
+     * get all data from topic
+     */
+    async function selectAllTopicsData() {
+        await $.ajax({
+            type: "POST",
+            url: "/topic/getAllTopics",
+            success: function (response) {
+                // success deal
+                console.log("成功！", response);
+                let res = response.data;
+                // generate cards for loop
+                for (let i = 0; i < res.length; i++) {
+                    let cardDiv = $('<div>', {
+                        'class': 'card card-img',
+                        'text': res[i].topicName
+                    }).addClass('card-' + (i + 1)).css("background-color", generateRandomColor());
+                    mainContent.append(cardDiv);
+                }
+            },
+            error: function (response) {
+                // failed deal
+                console.error("失败！", response);
+            }
+        })
+    }
+
+
+    /**
+     * generate random color
+     */
+    function generateRandomColor() {
+        // random colors
+        let colorLists = [
+            "#96EFFF","#5FBDFF","#FAEED1","#DED0B6",
+            "#EEF296","#9ADE7B","#FFC5C5","#FFEBD8",
+            "#F4DFC8","#F4EAE0","#FFE3BB","#DCBFFF",
+            "#B0926A","#E1C78F","#EF9595","#FFEEF4",
+            "#91C8E4","#CEE6F3","#D4E2D4","#A78295"
+        ];
+        let randomIndex = Math.floor(Math.random() * colorLists.length);
+        return colorLists[randomIndex];
+    }
+
+
 
     /**
      * generate user picture by user sex.

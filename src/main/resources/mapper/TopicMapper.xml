@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace属性指定当前映射文件和哪个接口进行映射，需要标注包的完整路径接口-->
+<mapper namespace="com.zmr.topic.mapper.TopicMapper">
+    <!--自定义映射规则-->
+    <resultMap id="topics" type="com.zmr.topic.entity.Topic">
+        <id column="ID" property="Id"></id>
+        <result column="TOPIC_NAME" property="topicName"></result>
+        <result column="TOPIC_CLASS" property="topicClass"></result>
+    </resultMap>
+    <!--id指定接口方法的名称-->
+    <insert id="insert">
+        INSERT INTO TOPICS(TOPIC_NAME,TOPIC_CLASS) values (#{topicName},#{topicClass})
+    </insert>
+
+    <!--当表的字段和类的对象的属性不一致时，来自定义查询结果集的映射规则-->
+    <select id="findAllTopics" resultMap="topics">
+        SELECT ID, TOPIC_NAME, TOPIC_CLASS FROM TOPICS;
+    </select>
+
+    <delete id="deleteById">
+        DELETE FROM TOPICS WHERE ID=#{Id}
+    </delete>
+
+    <update id="update">
+        UPDATE TOPICS SET TOPIC_NAME=#{topicName},TOPIC_CLASS=#{topicClass} where ID=#{Id}
+    </update>
+</mapper>
+
