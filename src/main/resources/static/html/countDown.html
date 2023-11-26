@@ -4,33 +4,42 @@
     <meta charset="UTF-8">
     <title>CountDown</title>
     <link rel="stylesheet" href="../css/countDown.css">
+    <script src="../JQuery/jquery-3.7.1.min.js"></script>
+    <script type="application/javascript" src="../js/countDown.js"></script>
 </head>
 <body>
-  <div class="holder">
-    <div id="tens" class="reel">
-      <div>5</div>
-      <div>4</div>
-      <div>3</div>
-      <div>2</div>
-      <div>1</div>
-      <div>0</div>
-      <div>9</div>
-      <div>8</div>
-      <div>7</div>
-      <div>6</div>
+    <div id="wrap">
+        <div class="c"></div>
+        <div class="o"></div>
+        <div class="u"></div>
+        <div class="n"></div>
+        <div class="t"></div>
     </div>
-    <div id="ones" class="reel">
-      <div>9</div>
-      <div>8</div>
-      <div>7</div>
-      <div>6</div>
-      <div>5</div>
-      <div>4</div>
-      <div>3</div>
-      <div>2</div>
-      <div>1</div>
-      <div>0</div>
+    <svg>
+        <defs>
+            <filter id="filter">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="18" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 28 -10" result="filter" />
+                <feComposite in="SourceGraphic" in2="filter" operator="atop" />
+            </filter>
+        </defs>
+    </svg>
+
+    <div id="wrap1">
+        <div class="c"></div>
+        <div class="o"></div>
+        <div class="u"></div>
+        <div class="n"></div>
+        <div class="t"></div>
     </div>
-  </div>
+    <svg>
+        <defs>
+            <filter id="filter">
+                <feGaussianBlur in="SourceGraphic" stdDeviation="18" result="blur" />
+                <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 28 -10" result="filter" />
+                <feComposite in="SourceGraphic" in2="filter" operator="atop" />
+            </filter>
+        </defs>
+    </svg>
 </body>
 </html>

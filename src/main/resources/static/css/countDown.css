@@ -1,420 +1,399 @@
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap");
-body {
-    height: 100vh;
-    margin: 0;
-    display: grid;
-    place-items: center;
-    font-family: "JetBrains Mono", monospace;
-    text-shadow: 0 0 5px white;
-    perspective: 1000px;
-    perspective-origin: calc(50% - 0) calc(50% - 0);
-    background: #676767;
-    color: #fff;
-}
-.holder {
-    width: 100px;
+/*body {*/
+/*    background: linear-gradient(90deg, #53a0fd, #01c2f3);*/
+/*}*/
+.countDown {
+    /*overflow: hidden;*/
     height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    justify-content: space-between;
-    transform-style: preserve-3d;
-    animation: hold 30s infinite ease-in-out;
+    width: 200px;
 }
-.holder:after {
-    content: "";
-    width: 600px;
-    height: 300px;
-    left: -150px;
-    top: -50px;
+#wrap {
     position: absolute;
-    background: #858585;
-    filter: blur(20px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.2);
+    transform-origin: 170% -40%;
+    width: 360px;
+    height: 360px;
+    filter: url('#filter');
 }
-.holder:before {
-    content: "";
-    width: 340px;
-    height: 100px;
-    left: 0;
-    top: 50px;
+#wrap1 {
+    margin-left: 70px;
     position: absolute;
-    background: #888888;
-    transform: translateY(230px) rotateX(90deg);
-    filter: blur(20px);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.2);
+    transform-origin: 170% -40%;
+    width: 360px;
+    height: 360px;
+    filter: url('#filter');
 }
-.reel {
-    position: relative;
-    transform-style: preserve-3d;
-}
-.reel div {
-    position: absolute;
-    text-align: center;
+.c, .o, .u, .n, .t {
     width: 50px;
-    height: 100px;
-    font-size: 72px;
-    line-height: 100px;
-    animation: fade 10s infinite linear;
+    height: 50px;
+    position: absolute;
+    top: calc(50% - 25px);
+    left: calc(50% - 25px);
+    background: #fff;
+    border-radius: 20px;
+    content: '';
+    transform: rotate(360deg);
+    transition: all 0.5s cubic-bezier(0.95, 0.01, 0, 1);
+    box-shadow: 0 2px 10px rgba(255, 255, 255, .5);
 }
-.reel div:nth-child(1) {
-    --left: 0px;
-    transform: translate(-50%, -50%) rotateX(0deg) translateZ(154px);
-    animation-delay: 0s;
+.c {
+    transition-delay: 0.05s;
 }
-.reel div:nth-child(2) {
-    --left: 50px;
-    transform: translate(-50%, -50%) rotateX(36deg) translateZ(154px);
-    animation-delay: 1s;
+.o {
+    transition-delay: 0.1s;
 }
-.reel div:nth-child(3) {
-    --left: 100px;
-    transform: translate(-50%, -50%) rotateX(72deg) translateZ(154px);
-    animation-delay: 2s;
+.u {
+    transition-delay: 0.15s;
 }
-.reel div:nth-child(4) {
-    --left: 150px;
-    transform: translate(-50%, -50%) rotateX(108deg) translateZ(154px);
-    animation-delay: 3s;
+.n {
+    transition-delay: 0.2s;
 }
-.reel div:nth-child(5) {
-    --left: 200px;
-    transform: translate(-50%, -50%) rotateX(144deg) translateZ(154px);
-    animation-delay: 4s;
+.t {
+    transition-delay: 0.25s;
 }
-.reel div:nth-child(6) {
-    --left: 250px;
-    transform: translate(-50%, -50%) rotateX(180deg) translateZ(154px);
-    animation-delay: 5s;
+/*-------------------- Nine --------------------*/
+.wrap-9 .c {
+    width: 180px;
+    height: 60px;
+    left: 90px;
+    top: 30px;
 }
-.reel div:nth-child(7) {
-    --left: 300px;
-    transform: translate(-50%, -50%) rotateX(216deg) translateZ(154px);
-    animation-delay: 6s;
+.wrap-9 .o {
+    width: 60px;
+    height: 240px;
+    left: 240px;
+    top: 60px;
+    transform: rotate(180deg);
 }
-.reel div:nth-child(8) {
-    --left: 350px;
-    transform: translate(-50%, -50%) rotateX(252deg) translateZ(154px);
-    animation-delay: 7s;
+.wrap-9 .u {
+    width: 150px;
+    height: 60px;
+    left: 120px;
+    top: 270px;
+    transform: rotate(180deg);
 }
-.reel div:nth-child(9) {
-    --left: 400px;
-    transform: translate(-50%, -50%) rotateX(288deg) translateZ(154px);
-    animation-delay: 8s;
+.wrap-9 .n {
+    width: 180px;
+    height: 60px;
+    left: 90px;
+    top: 150px;
 }
-.reel div:nth-child(10) {
-    --left: 450px;
-    transform: translate(-50%, -50%) rotateX(324deg) translateZ(154px);
-    animation-delay: 9s;
+.wrap-9 .t {
+    width: 60px;
+    height: 120px;
+    left: 60px;
+    top: 60px;
+    transform: rotate(180deg);
 }
-* {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
+/*-------------------- Eight --------------------*/
+.wrap-8 .c {
+    width: 180px;
+    height: 60px;
+    left: 90px;
+    top: 150px;
+    transform: rotate(180deg);
 }
-#ones {
-    animation: increment-ones 10s infinite ease-in;
+.wrap-8 .o {
+    width: 60px;
+    height: 240px;
+    left: 60px;
+    top: 60px;
 }
-#tens {
-    animation: increment-tens 100s infinite ease-in;
+.wrap-8 .u {
+    width: 180px;
+    height: 60px;
+    left: 90px;
+    top: 270px;
+    transform: rotate(180deg);
 }
-#hundreds {
-    animation: increment-hund 1000s infinite ease-in;
+.wrap-8 .n {
+    width: 180px;
+    height: 60px;
+    left: 90px;
+    top: 30px;
 }
-#thousands {
-    animation: increment-thou 10000s infinite ease-in;
+.wrap-8 .t {
+    width: 60px;
+    height: 240px;
+    left: 240px;
+    top: 60px;
+    transform: rotate(180deg);
 }
-#tenthousands {
-    animation: increment-tenthou 100000s infinite ease-in;
+/*-------------------- Seven --------------------*/
+.wrap-7 .c {
+    width: 140px;
+    height: 60px;
+    left: 190px;
+    top: 70px;
+    transform: rotate(-65deg);
 }
-#hundredthousands {
-    animation: increment-hunthou 1000000s infinite ease-in;
+.wrap-7 .o {
+    width: 190px;
+    height: 60px;
+    left: 100px;
+    top: 210px;
+    transform: rotate(-65deg);
 }
-#millions {
-    animation: increment-million 10000000s infinite ease-in;
+.wrap-7 .u {
+    width: 0;
+    height: 0;
+    left: 90px;
+    top: 270px;
 }
-#tenmillions {
-    animation: increment-tenmillion 10000000s infinite ease-in;
+.wrap-7 .n {
+    width: 0;
+    height: 0;
+    left: 150px;
+    top: 150px;
 }
-@keyframes increment-ones {
-    0% {
-        transform: rotateX(0);
-    }
-    10% {
-        transform: rotateX(-36deg);
-    }
-    20% {
-        transform: rotateX(-72deg);
-    }
-    30% {
-        transform: rotateX(-108deg);
-    }
-    40% {
-        transform: rotateX(-144deg);
-    }
-    50% {
-        transform: rotateX(-180deg);
-    }
-    60% {
-        transform: rotateX(-216deg);
-    }
-    70% {
-        transform: rotateX(-252deg);
-    }
-    80% {
-        transform: rotateX(-288deg);
-    }
-    90% {
-        transform: rotateX(-324deg);
-    }
-    100% {
-        transform: rotateX(-360deg);
-    }
+.wrap-7 .t {
+    width: 180px;
+    height: 60px;
+    left: 90px;
+    top: 30px;
 }
-@keyframes increment-tens {
-    0%, 9% {
-        transform: rotateX(0);
-    }
-    100% {
-        transform: rotateX(-360deg);
-    }
-    10%, 19% {
-        transform: rotateX(-36deg);
-    }
-    20%, 29% {
-        transform: rotateX(-72deg);
-    }
-    30%, 39% {
-        transform: rotateX(-108deg);
-    }
-    40%, 49% {
-        transform: rotateX(-144deg);
-    }
-    50%, 59% {
-        transform: rotateX(-180deg);
-    }
-    60%, 69% {
-        transform: rotateX(-216deg);
-    }
-    70%, 79% {
-        transform: rotateX(-252deg);
-    }
-    80%, 89% {
-        transform: rotateX(-288deg);
-    }
-    90%, 99% {
-        transform: rotateX(-324deg);
-    }
+/*-------------------- Six --------------------*/
+.wrap-6 .c {
+    width: 180px;
+    height: 60px;
+    left: 90px;
+    top: 150px;
+    transform: rotate(180deg);
 }
-@keyframes increment-hund {
-    0%, 9.9% {
-        transform: rotateX(0);
-    }
-    100% {
-        transform: rotateX(-360deg);
-    }
-    10%, 19.9% {
-        transform: rotateX(-36deg);
-    }
-    20%, 29.9% {
-        transform: rotateX(-72deg);
-    }
-    30%, 39.9% {
-        transform: rotateX(-108deg);
-    }
-    40%, 49.9% {
-        transform: rotateX(-144deg);
-    }
-    50%, 59.9% {
-        transform: rotateX(-180deg);
-    }
-    60%, 69.9% {
-        transform: rotateX(-216deg);
-    }
-    70%, 79.9% {
-        transform: rotateX(-252deg);
-    }
-    80%, 89.9% {
-        transform: rotateX(-288deg);
-    }
-    90%, 99.9% {
-        transform: rotateX(-324deg);
-    }
+.wrap-6 .o {
+    width: 180px;
+    height: 60px;
+    left: 90px;
+    top: 270px;
+    transform: rotate(180deg);
 }
-@keyframes increment-thou {
-    0%, 9.99% {
-        transform: rotateX(0);
-    }
-    100% {
-        transform: rotateX(-360deg);
-    }
-    10%, 19.99% {
-        transform: rotateX(-36deg);
-    }
-    20%, 29.99% {
-        transform: rotateX(-72deg);
-    }
-    30%, 39.99% {
-        transform: rotateX(-108deg);
-    }
-    40%, 49.99% {
-        transform: rotateX(-144deg);
-    }
-    50%, 59.99% {
-        transform: rotateX(-180deg);
-    }
-    60%, 69.99% {
-        transform: rotateX(-216deg);
-    }
-    70%, 79.99% {
-        transform: rotateX(-252deg);
-    }
-    80%, 89.99% {
-        transform: rotateX(-288deg);
-    }
-    90%, 99.99% {
-        transform: rotateX(-324deg);
-    }
+.wrap-6 .u {
+    width: 60px;
+    height: 240px;
+    left: 60px;
+    top: 60px;
 }
-@keyframes increment-tenthou {
-    0%, 9.999% {
-        transform: rotateX(0);
-    }
-    100% {
-        transform: rotateX(-360deg);
-    }
-    10%, 19.999% {
-        transform: rotateX(-36deg);
-    }
-    20%, 29.999% {
-        transform: rotateX(-72deg);
-    }
-    30%, 39.999% {
-        transform: rotateX(-108deg);
-    }
-    40%, 49.999% {
-        transform: rotateX(-144deg);
-    }
-    50%, 59.999% {
-        transform: rotateX(-180deg);
-    }
-    60%, 69.999% {
-        transform: rotateX(-216deg);
-    }
-    70%, 79.999% {
-        transform: rotateX(-252deg);
-    }
-    80%, 89.999% {
-        transform: rotateX(-288deg);
-    }
-    90%, 99.999% {
-        transform: rotateX(-324deg);
-    }
+.wrap-6 .n {
+    width: 60px;
+    height: 120px;
+    left: 240px;
+    top: 180px;
+    transform: rotate(180deg);
 }
-@keyframes increment-hunthou {
-    0%, 9.9999% {
-        transform: rotateX(0);
-    }
-    100% {
-        transform: rotateX(-360deg);
-    }
-    10%, 19.9999% {
-        transform: rotateX(-36deg);
-    }
-    20%, 29.9999% {
-        transform: rotateX(-72deg);
-    }
-    30%, 39.9999% {
-        transform: rotateX(-108deg);
-    }
-    40%, 49.9999% {
-        transform: rotateX(-144deg);
-    }
-    50%, 59.9999% {
-        transform: rotateX(-180deg);
-    }
-    60%, 69.9999% {
-        transform: rotateX(-216deg);
-    }
-    70%, 79.9999% {
-        transform: rotateX(-252deg);
-    }
-    80%, 89.9999% {
-        transform: rotateX(-288deg);
-    }
-    90%, 99.9999% {
-        transform: rotateX(-324deg);
-    }
+.wrap-6 .t {
+    width: 180px;
+    height: 60px;
+    left: 90px;
+    top: 30px;
 }
-@keyframes increment-million {
-    0%, 9.99999% {
-        transform: rotateX(0);
-    }
-    100% {
-        transform: rotateX(-360deg);
-    }
-    10%, 19.99999% {
-        transform: rotateX(-36deg);
-    }
-    20%, 29.99999% {
-        transform: rotateX(-72deg);
-    }
-    30%, 39.99999% {
-        transform: rotateX(-108deg);
-    }
-    40%, 49.99999% {
-        transform: rotateX(-144deg);
-    }
-    50%, 59.99999% {
-        transform: rotateX(-180deg);
-    }
-    60%, 69.99999% {
-        transform: rotateX(-216deg);
-    }
-    70%, 79.99999% {
-        transform: rotateX(-252deg);
-    }
-    80%, 89.99999% {
-        transform: rotateX(-288deg);
-    }
-    90%, 99.99999% {
-        transform: rotateX(-324deg);
-    }
+/*-------------------- Five --------------------*/
+.wrap-5 .c {
+    width: 210px;
+    height: 60px;
+    left: 60px;
+    top: 30px;
+    transform: rotate(180deg);
 }
-@keyframes increment-tenmillion {
-    0%, 9.999999% {
-        transform: rotateX(0);
-    }
-    100% {
-        transform: rotateX(-360deg);
-    }
-    10%, 19.999999% {
-        transform: rotateX(-36deg);
-    }
-    20%, 29.999999% {
-        transform: rotateX(-72deg);
-    }
-    30%, 39.999999% {
-        transform: rotateX(-108deg);
-    }
-    40%, 49.999999% {
-        transform: rotateX(-144deg);
-    }
-    50%, 59.999999% {
-        transform: rotateX(-180deg);
-    }
-    60%, 69.999999% {
-        transform: rotateX(-216deg);
-    }
-    70%, 79.999999% {
-        transform: rotateX(-252deg);
-    }
-    80%, 89.999999% {
-        transform: rotateX(-288deg);
-    }
-    90%, 99.999999% {
-        transform: rotateX(-324deg);
-    }
+.wrap-5 .o {
+    width: 210px;
+    height: 60px;
+    left: 60px;
+    top: 270px;
+    transform: rotate(180deg);
+}
+.wrap-5 .u {
+    width: 60px;
+    height: 120px;
+    left: 240px;
+    top: 180px;
+    transform: rotate(180deg);
+}
+.wrap-5 .n {
+    width: 60px;
+    height: 140px;
+    left: 60px;
+    top: 60px;
+}
+.wrap-5 .t {
+    width: 180px;
+    height: 60px;
+    left: 90px;
+    top: 150px;
+}
+/*-------------------- Four --------------------*/
+.wrap-4 .c {
+    width: 60px;
+    height: 303px;
+    left: 210px;
+    top: 30px;
+    transform: rotate(180deg);
+}
+.wrap-4 .o {
+    width: 60px;
+    height: 60px;
+    left: 244px;
+    top: 211px;
+    transform: rotate(180deg);
+}
+.wrap-4 .u {
+    width: 60px;
+    height: 81px;
+    left: 60px;
+    top: 180px;
+    transform: rotate(180deg);
+}
+.wrap-4 .n {
+    width: 60px;
+    height: 208px;
+    left: 110px;
+    top: 9px;
+    transform: rotate(45deg);
+}
+.wrap-4 .t {
+    width: 210px;
+    height: 60px;
+    left: 57px;
+    top: 210px;
+}
+/*-------------------- Three --------------------*/
+.wrap-3 .c {
+    width: 180px;
+    height: 60px;
+    left: 90px;
+    top: 150px;
+    transform: rotate(180deg);
+}
+.wrap-3 .o {
+    width: 60px;
+    height: 110px;
+    left: 240px;
+    top: 60px;
+    transform: rotate(180deg);
+}
+.wrap-3 .u {
+    width: 180px;
+    height: 60px;
+    left: 90px;
+    top: 270px;
+    transform: rotate(180deg);
+}
+.wrap-3 .n {
+    width: 180px;
+    height: 60px;
+    left: 90px;
+    top: 30px;
+}
+.wrap-3 .t {
+    width: 60px;
+    height: 110px;
+    left: 240px;
+    top: 190px;
+    transform: rotate(-180deg);
+}
+/*-------------------- Two --------------------*/
+.wrap-2 .c {
+    width: 180px;
+    height: 60px;
+    left: 90px;
+    top: 30px;
+}
+.wrap-2 .o {
+    width: 60px;
+    height: 130px;
+    left: 240px;
+    top: 60px;
+    transform: rotate(180deg);
+}
+.wrap-2 .u {
+    width: 210px;
+    height: 60px;
+    left: 90px;
+    top: 270px;
+    transform: rotate(180deg);
+}
+.wrap-2 .n {
+    width: 180px;
+    height: 60px;
+    left: 90px;
+    top: 150px;
+}
+.wrap-2 .t {
+    width: 60px;
+    height: 160px;
+    left: 60px;
+    top: 170px;
+    transform: rotate(180deg);
+}
+/*-------------------- One --------------------*/
+.wrap-1 .c {
+    width: 160px;
+    height: 60px;
+    left: 101px;
+    top: 57px;
+    transform: rotate(-36deg);
+}
+.wrap-1 .o {
+    width: 0;
+    height: 0;
+    left: 240px;
+    top: 60px;
+    transform: rotate(180deg);
+}
+.wrap-1 .u {
+    width: 0;
+    height: 0;
+    left: 90px;
+    top: 270px;
+}
+.wrap-1 .n {
+    width: 60px;
+    height: 140px;
+    left: 193px;
+    top: 50px;
+    transform: rotate(180deg);
+}
+.wrap-1 .t {
+    width: 60px;
+    height: 160px;
+    left: 193px;
+    top: 174px;
+    transform: rotate(-180deg);
+}
+/*-------------------- Zero --------------------*/
+.wrap-0 .c {
+    width: 0;
+    height: 0;
+    left: 90px;
+    top: 150px;
+    transform: rotate(180deg);
+}
+.wrap-0 .o {
+    width: 60px;
+    height: 240px;
+    left: 60px;
+    top: 60px;
+}
+.wrap-0 .u {
+    width: 180px;
+    height: 60px;
+    left: 90px;
+    top: 270px;
+    transform: rotate(180deg);
+}
+.wrap-0 .n {
+    width: 180px;
+    height: 60px;
+    left: 90px;
+    top: 30px;
+}
+.wrap-0 .t {
+    width: 60px;
+    height: 240px;
+    left: 240px;
+    top: 60px;
+    transform: rotate(180deg);
 }

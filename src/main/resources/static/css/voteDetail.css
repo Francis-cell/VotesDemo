@@ -2,6 +2,13 @@ body {
     --background-color: hsl(180, 20%, 90%);
 }
 
+.main-header .main-header__title {
+    display: flex;
+    flex-direction: row;
+    height: 80px;
+}
+
+
 .vote-content {
     display: flex;
     /*

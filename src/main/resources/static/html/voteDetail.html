@@ -7,8 +7,10 @@
     <title>Vote Here</title>
     <link rel="stylesheet" href="../css/index.css">
     <link rel="stylesheet" href="../css/voteDetail.css">
+    <link rel="stylesheet" href="../css/countDown.css">
     <script src="../JQuery/jquery-3.7.1.min.js"></script>
-    <script type="application/javascript" src="../js/index.js"></script>
+    <script type="application/javascript" src="../DemoJs/voteDetail.js"></script>
+    <script type="application/javascript" src="../js/countDown.js"></script>
     <script type="application/javascript" src="../js/emojiAnimation.js"></script>
 </head>
 <body>
@@ -37,7 +39,45 @@
             <div class="main-header">
                 <!--  -->
                 <!-- main header title-->
-                <div class="main-header__title"> Choose you like here. </div>
+                <div class="main-header__title">
+                    <div class="main-header-title-show">Choose you like here. </div>
+                    <!-- count down -->
+                    <div class="countDown">
+                        <div id="wrap">
+                            <div class="c"></div>
+                            <div class="o"></div>
+                            <div class="u"></div>
+                            <div class="n"></div>
+                            <div class="t"></div>
+                        </div>
+                        <svg width="100" height="100">
+                            <defs>
+                                <filter id="filter">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="18" result="blur" />
+                                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 28 -10" result="filter" />
+                                    <feComposite in="SourceGraphic" in2="filter" operator="atop" />
+                                </filter>
+                            </defs>
+                        </svg>
+
+                        <div id="wrap1">
+                            <div class="c"></div>
+                            <div class="o"></div>
+                            <div class="u"></div>
+                            <div class="n"></div>
+                            <div class="t"></div>
+                        </div>
+                        <svg width="100" height="100">
+                            <defs>
+                                <filter id="filter">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="18" result="blur" />
+                                    <feColorMatrix in="blur" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 28 -10" result="filter" />
+                                    <feComposite in="SourceGraphic" in2="filter" operator="atop" />
+                                </filter>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
                 <!-- vote content -->
                 <div class="vote-content">
                     <div class="wrap wrap--1 main-div">
@@ -83,5 +123,4 @@
         </div>
     </div>
 </body>
-<script src="../js/voteDetail.js"></script>
 </html>
