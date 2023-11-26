@@ -7,7 +7,10 @@ $(document).ready(async function () {
     const userName = $(".userName");
     const userEmail = $(".userEmail");
     const logout = $(".logout");
-    const mainContent = $(".main-content")
+    const mainContent = $(".main-content");
+
+    // all topics
+    let topics;
 
 
     // sidebar link active class change event.
@@ -24,6 +27,9 @@ $(document).ready(async function () {
     await generateUserInfo();
     // Generate page topics data
     await selectAllTopicsData();
+
+    // nav change method
+    navItemChange();
 
     /**
      * generate username and user email
@@ -76,12 +82,12 @@ $(document).ready(async function () {
             success: function (response) {
                 // success deal
                 console.log("成功！", response);
-                let res = response.data;
+                topics = response.data;
                 // generate cards for loop
-                for (let i = 0; i < res.length; i++) {
+                for (let i = 0; i < topics.length; i++) {
                     let cardDiv = $('<div>', {
                         'class': 'card card-img',
-                        'text': res[i].topicName
+                        'text': topics[i].topicName
                     }).addClass('card-' + (i + 1)).css("background-color", generateRandomColor());
                     mainContent.append(cardDiv);
                 }
@@ -208,6 +214,74 @@ $(document).ready(async function () {
             }
         });
     }
+
+
+    /**
+     * nav change method
+     */
+    function navItemChange() {
+        function addCardsToMainContent(topicInner) {
+            // clear main-content
+            mainContent.empty();
+            // generate cards for loop
+            for (let i = 0; i < topicInner.length; i++) {
+                let cardDiv = $('<div>', {
+                    'class': 'card card-img',
+                    'text': topicInner[i].topicName
+                }).addClass('card-' + (i + 1)).css("background-color", generateRandomColor());
+                mainContent.append(cardDiv);
+            }
+        }
+
+        function filterTopics(type) {
+            return topics.filter(item => {
+               return item.topicClass === type;
+            });
+        }
+
+        // All
+        $("#All").on("click", function (event) {
+            event.preventDefault();
+            addCardsToMainContent(topics);
+        });
+
+        // Favorite
+        $("#Favorite").on("click", function (event) {
+            event.preventDefault();
+            let tmpTopics = filterTopics("Favorite");
+            addCardsToMainContent(tmpTopics);
+        });
+
+        // Life
+        $("#Life").on("click", function (event) {
+            event.preventDefault();
+            let tmpTopics = filterTopics("Life");
+            addCardsToMainContent(tmpTopics);
+        });
+
+        // Travel
+        $("#Travel").on("click", function (event) {
+            event.preventDefault();
+            let tmpTopics = filterTopics("Travel");
+            addCardsToMainContent(tmpTopics);
+        });
+
+        // Books
+        $("#Books").on("click", function (event) {
+            event.preventDefault();
+            let tmpTopics = filterTopics("Books");
+            addCardsToMainContent(tmpTopics);
+        });
+
+        // Transportation
+        $("#Transportation").on("click", function (event) {
+            event.preventDefault();
+            let tmpTopics = filterTopics("Transportation");
+            addCardsToMainContent(tmpTopics);
+        });
+    }
+
+
 
     /**
      * card inner button click event
