@@ -46,6 +46,9 @@ public class User implements UserDetails {
     /** update time for info */
     private Long updateTime;
 
+    /** sex */
+    private String sex;
+
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return Collections.singletonList(new SimpleGrantedAuthority("ROLE_USER"));

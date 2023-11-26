@@ -19,4 +19,5 @@ public class UserInfo {
     private String userAccount;
     private String userName;
     private String email;
+    private String sex;
 }

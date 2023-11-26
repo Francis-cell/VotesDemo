@@ -12,10 +12,11 @@
         <result column="EMAIL" property="email"></result>
         <result column="SALT" property="salt"></result>
         <result column="PASSWORD" property="password"></result>
+        <result column="SEX" property="sex"></result>
     </resultMap>
     <!--id指定接口方法的名称-->
     <insert id="insert">
-        INSERT INTO SYS_USER(USER_ACCOUNT,PASSWORD,SALT,USER_NAME,EMAIL) values (#{userAccount},#{password},#{salt},#{userName},#{email})
+        INSERT INTO SYS_USER(USER_ACCOUNT,PASSWORD,SALT,USER_NAME,EMAIL,SEX) values (#{userAccount},#{password},#{salt},#{userName},#{email},#{sex})
     </insert>
 
     <!--当表的字段和类的对象的属性不一致时，来自定义查询结果集的映射规则-->

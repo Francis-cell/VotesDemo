@@ -37,12 +37,32 @@ $(document).ready(async function () {
                 let res = response.data;
                 userName.text(res.userName);
                 userEmail.text(res.email);
+                // get user sex
+                userPicture.attr("src", generateUserPictureBySex(res.sex));
             },
             error: function (response) {
                 // failed deal
                 console.error("失败！", response);
             }
         });
+    }
+
+    /**
+     * generate user picture by user sex.
+     */
+    function generateUserPictureBySex(sex) {
+        // picture path
+        let picturePath = "../userPictures/";
+        let randomIndex = Math.floor(Math.random() * 4) + 1;
+        let lastUserPicturePath = "";
+        if (sex === "1") {
+            // boy
+            lastUserPicturePath = "boy0" + randomIndex + ".svg";
+        } else {
+            // girl
+            lastUserPicturePath = "girl0" + randomIndex + ".svg";
+        }
+        return picturePath + lastUserPicturePath;
     }
 
 

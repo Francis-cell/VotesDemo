@@ -84,6 +84,7 @@ public class UserServiceImpl implements IUserService {
             userInfo.setUserAccount(user.getUserAccount());
             userInfo.setUserName(user.getUsername());
             userInfo.setEmail(user.getEmail());
+            userInfo.setSex(user.getSex());
             return userInfo;
         }
     }
