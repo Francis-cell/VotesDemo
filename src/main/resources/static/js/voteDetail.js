@@ -26,12 +26,8 @@ $(document).ready(function () {
         }
     }
 
-
-    const mainDiv = $(".main-div");
-    const overlay = $(".overlay");
     const detailsBtn = $(".details-btn");
     const voteBtn = $(".vote-btn");
-    const drawer = $(".drawer");
 
     // 显示抽屉
     detailsBtn.on("click", function() {

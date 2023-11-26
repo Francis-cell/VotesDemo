@@ -1,6 +1,8 @@
 package com.zmr.login.service.Impl;
 
 import com.zmr.login.entity.User;
+import com.zmr.login.entity.UserAccount;
+import com.zmr.login.entity.UserInfo;
 import com.zmr.login.mapper.UserMapper;
 import com.zmr.login.service.IUserService;
 import com.zmr.main.exception.InsertException;
@@ -67,6 +69,22 @@ public class UserServiceImpl implements IUserService {
                 throw new UserNotFoundException("User password error!");
             }
             // redirect to index page
+        }
+    }
+
+    @Override
+    public UserInfo getUserInfo(UserAccount userAccount) {
+        UserInfo userInfo = new UserInfo();
+        String account = userAccount.getUserAccount();
+        // select user info with userAccount
+        User user = userMapper.findByUserAccount(account);
+        if (user == null) {
+            throw new UserNotFoundException("User account can't find!");
+        } else {
+            userInfo.setUserAccount(user.getUserAccount());
+            userInfo.setUserName(user.getUsername());
+            userInfo.setEmail(user.getEmail());
+            return userInfo;
         }
     }
 

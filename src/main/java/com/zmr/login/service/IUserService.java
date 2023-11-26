@@ -1,6 +1,8 @@
 package com.zmr.login.service;
 
 import com.zmr.login.entity.User;
+import com.zmr.login.entity.UserAccount;
+import com.zmr.login.entity.UserInfo;
 
 /**
  * @author franciszmr
@@ -27,4 +29,12 @@ public interface IUserService {
      * @param user
      */
     void login(User user);
+
+
+    /**
+     * get user info by userAccount
+     * @param userAccount
+     * @return
+     */
+    UserInfo getUserInfo(UserAccount userAccount);
 }

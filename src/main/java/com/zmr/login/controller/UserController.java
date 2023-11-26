@@ -1,6 +1,8 @@
 package com.zmr.login.controller;
 
 import com.zmr.login.entity.User;
+import com.zmr.login.entity.UserAccount;
+import com.zmr.login.entity.UserInfo;
 import com.zmr.login.mapper.UserMapper;
 import com.zmr.login.service.IUserService;
 import com.zmr.main.exception.InsertException;
@@ -29,7 +31,6 @@ public class UserController {
     
     @GetMapping("/{userName}")
     public ResponseResult findByUserName(@PathVariable String userName) {
-        System.out.println("11111111");
         return ResponseResult.success(userMapper.findByUserName(userName));
     }
     
@@ -58,5 +59,11 @@ public class UserController {
             return ResponseResult.fail(400, "Login failed!");
             //return "redirect:/myLogin";
         }
+    }
+
+    @PostMapping("/getUserInfo")
+    public ResponseResult getUserInfo(@RequestBody UserAccount userAccount) {
+        UserInfo userInfo = userService.getUserInfo(userAccount);
+        return ResponseResult.success(userInfo);
     }
 }

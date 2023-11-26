@@ -1,10 +1,48 @@
-$(document).ready(function () {
+// import {requestHandler} from "./HandlerUtils.js"
+// import $ from "../JQuery/jquery-3.7.1.min";
+
+$(document).ready(async function () {
+    // 设置一些全局的变量
+    const userPicture = $(".userPicture");
+    const userName = $(".userName");
+    const userEmail = $(".userEmail");
+
+
     // sidebar link active class change event.
     activeSideBarMenuChange();
     // nav item link active class change event.
     activeNavItemChange();
     // card click event.
     cardClick();
+
+
+    // Generate username and user email information.
+    await generateUserInfo();
+
+    /**
+     * generate username and user email
+     */
+    async function generateUserInfo() {
+        let requestData = JSON.stringify({ "userAccount": 'wangZiDianXia'});
+        // let res = await requestHandler("/user/getUserInfo", requestData);
+        await $.ajax({
+            type: "POST",
+            url: "/user/getUserInfo",
+            contentType: "application/json",
+            data: requestData,
+            success: function (response) {
+                // success deal
+                console.error("成功！", response);
+                let res = response.data;
+                userName.text(res.userName);
+                userEmail.text(res.email);
+            },
+            error: function (response) {
+                // failed deal
+                console.error("失败！", response);
+            }
+        });
+    }
 
 
     /**
