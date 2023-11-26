@@ -6,6 +6,7 @@ $(document).ready(async function () {
     const userPicture = $(".userPicture");
     const userName = $(".userName");
     const userEmail = $(".userEmail");
+    const logout = $(".logout");
 
 
     // sidebar link active class change event.
@@ -14,6 +15,8 @@ $(document).ready(async function () {
     activeNavItemChange();
     // card click event.
     cardClick();
+    // register "logout" event.
+    logOut();
 
 
     // Generate username and user email information.
@@ -33,7 +36,7 @@ $(document).ready(async function () {
             data: requestData,
             success: function (response) {
                 // success deal
-                console.error("成功！", response);
+                console.log("成功！", response);
                 let res = response.data;
                 userName.text(res.userName);
                 userEmail.text(res.email);
@@ -44,6 +47,18 @@ $(document).ready(async function () {
                 // failed deal
                 console.error("失败！", response);
             }
+        });
+    }
+
+    /**
+     * logOut
+     */
+    function logOut() {
+        logout.off("click").on("click", function (event) {
+            event.preventDefault();
+            // 退回登录页面
+            // location.replace("/myLogin");
+            window.location.href = "/myLogin";
         });
     }
 

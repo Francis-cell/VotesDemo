@@ -61,7 +61,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     SavedRequestAwareAuthenticationSuccessHandler successHandler() {
         SavedRequestAwareAuthenticationSuccessHandler handler =
                 new SavedRequestAwareAuthenticationSuccessHandler();
-        handler.setDefaultTargetUrl("/html/index.html");
+        handler.setDefaultTargetUrl("/index");
         handler.setTargetUrlParameter("target");
         return handler;
     }
