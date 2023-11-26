@@ -17,8 +17,6 @@ $(document).ready(async function () {
     activeSideBarMenuChange();
     // nav item link active class change event.
     activeNavItemChange();
-    // card click event.
-    cardClick();
     // register "logout" event.
     logOut();
 
@@ -27,7 +25,6 @@ $(document).ready(async function () {
     await generateUserInfo();
     // Generate page topics data
     await selectAllTopicsData();
-
     // nav change method
     navItemChange();
 
@@ -91,6 +88,8 @@ $(document).ready(async function () {
                     }).addClass('card-' + (i + 1)).css("background-color", generateRandomColor());
                     mainContent.append(cardDiv);
                 }
+                // card click event.
+                cardClick();
             },
             error: function (response) {
                 // failed deal
@@ -191,7 +190,7 @@ $(document).ready(async function () {
                     <div class="card-inner">
                         <p class="card-title"></p>
                         <div class="card-content">
-                          <p class="card-content-detail">Detailed content goes here.</p>
+                          <p class="card-content-detail"></p>
                           <div class="btn btn__secondary"><p>Inner</p></div>
                           <div class="card-content-footer"></div>
                         </div>
@@ -201,6 +200,11 @@ $(document).ready(async function () {
                 $(".card-title").text($target.data("original-content"));
                 // set action event
                 $(".btn").on("click", cardButtonClick)
+                // card-content-detail content
+                let topicClicked = topics.filter(item => {
+                    return item.topicName === $target.data("original-content");
+                })
+                $(".card-content-detail").text(topicClicked[0].description);
 
                 $(".main-content").addClass("expanded");
                 $target.addClass("clicked");
@@ -239,10 +243,17 @@ $(document).ready(async function () {
             });
         }
 
+        function clearNativeElement() {
+            $(".main-content").removeClass("expanded");
+        }
+
         // All
         $("#All").on("click", function (event) {
             event.preventDefault();
             addCardsToMainContent(topics);
+            clearNativeElement();
+            // card click event.
+            cardClick();
         });
 
         // Favorite
@@ -250,6 +261,9 @@ $(document).ready(async function () {
             event.preventDefault();
             let tmpTopics = filterTopics("Favorite");
             addCardsToMainContent(tmpTopics);
+            clearNativeElement();
+            // card click event.
+            cardClick();
         });
 
         // Life
@@ -257,6 +271,9 @@ $(document).ready(async function () {
             event.preventDefault();
             let tmpTopics = filterTopics("Life");
             addCardsToMainContent(tmpTopics);
+            clearNativeElement();
+            // card click event.
+            cardClick();
         });
 
         // Travel
@@ -264,6 +281,9 @@ $(document).ready(async function () {
             event.preventDefault();
             let tmpTopics = filterTopics("Travel");
             addCardsToMainContent(tmpTopics);
+            clearNativeElement();
+            // card click event.
+            cardClick();
         });
 
         // Books
@@ -271,6 +291,9 @@ $(document).ready(async function () {
             event.preventDefault();
             let tmpTopics = filterTopics("Books");
             addCardsToMainContent(tmpTopics);
+            clearNativeElement();
+            // card click event.
+            cardClick();
         });
 
         // Transportation
@@ -278,6 +301,9 @@ $(document).ready(async function () {
             event.preventDefault();
             let tmpTopics = filterTopics("Transportation");
             addCardsToMainContent(tmpTopics);
+            clearNativeElement();
+            // card click event.
+            cardClick();
         });
     }
 

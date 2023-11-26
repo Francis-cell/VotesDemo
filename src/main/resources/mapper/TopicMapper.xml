@@ -9,6 +9,7 @@
         <id column="ID" property="Id"></id>
         <result column="TOPIC_NAME" property="topicName"></result>
         <result column="TOPIC_CLASS" property="topicClass"></result>
+        <result column="DESCRIPTION" property="description"></result>
     </resultMap>
     <!--id指定接口方法的名称-->
     <insert id="insert">
@@ -17,7 +18,7 @@
 
     <!--当表的字段和类的对象的属性不一致时，来自定义查询结果集的映射规则-->
     <select id="findAllTopics" resultMap="topics">
-        SELECT ID, TOPIC_NAME, TOPIC_CLASS FROM TOPICS;
+        SELECT ID, TOPIC_NAME, TOPIC_CLASS, DESCRIPTION FROM TOPICS;
     </select>
 
     <delete id="deleteById">

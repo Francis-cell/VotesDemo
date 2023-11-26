@@ -22,4 +22,6 @@ public class Topic {
     private String topicName;
     /** topic class */
     private String topicClass;
+    /** description */
+    private String description;
 }
