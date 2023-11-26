@@ -26,11 +26,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 //.addFilterBefore(new JsonAuthenticationFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                    .antMatchers("/html/**", "/css/**", "/js/**", "/JQuery/**", "/pictures/**")
+                    .antMatchers("/html/**", "/css/**", "/js/**", "/JQuery/**", "/pictures/**", "/templates/**")
                     .permitAll()
                     .antMatchers("/login.html", "/register.html")
                     .permitAll()
-                    .antMatchers("/user/register")
+                    .antMatchers("/user/register", "/register")
                     .permitAll()
                     .antMatchers("/error").permitAll()
                     .anyRequest()

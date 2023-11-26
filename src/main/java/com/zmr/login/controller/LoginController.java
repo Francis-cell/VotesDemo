@@ -17,6 +17,11 @@ public class LoginController {
         return "myLogin";
     }
 
+    @GetMapping("/register")
+    public String register(){
+        return "register";
+    }
+
     @RequestMapping("/index")
     public String index(){
         return "index";

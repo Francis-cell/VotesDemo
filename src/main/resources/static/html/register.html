@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../css/login.css">
     <script src="../JQuery/jquery.min.js"></script>
     <script src="../js/login.js"></script>
+    <script src="../js/register.js"></script>
     <script type="application/javascript" src="../js/emojiAnimation.js"></script>
 </head>
 <body>
@@ -23,6 +24,11 @@
         <i class="fa fa-key"></i>
         <label for="email" style="font-size: 14px;">email</label>
         <input type="text" id="email" placeholder="Email" name="email"/>
+        <label for="email" style="font-size: 14px;">sex</label>
+        <select id="sex">
+            <option value="boy" selected>boy</option>
+            <option value="girl">girl</option>
+        </select>
         <i class="fa fa-key"></i>
         <a href="../login.html">login</a>
         <button type="submit">
@@ -59,37 +65,37 @@
 
 
     // sumit method
-    $(document).ready(function () {
-        $('form.login').submit(function (event) {
-            event.preventDefault();
-
-            var username = $('input[name="username"]').val();
-            var userAccount = $('input[name="userAccount"]').val();
-            var password = $('input[name="password"]').val();
-            var email = $('input[name="email"]').val();
-
-            $.ajax({
-                type: 'POST',
-                url: '/user/register',
-                contentType: 'application/json',
-                data: JSON.stringify(
-                        {
-                            "userName": username,
-                            "userAccount": userAccount,
-                            "password": password,
-                            "email": email
-                        }),
-                success: function (response) {
-                    // alert(response.message);
-                    window.location.href = 'index.html';
-                },
-                error: function (error) {
-                    // register failed
-                    alert('Register failed!');
-                }
-            });
-        });
-    });
+    // $(document).ready(function () {
+    //     $('form.login').submit(function (event) {
+    //         event.preventDefault();
+    //
+    //         var username = $('input[name="username"]').val();
+    //         var userAccount = $('input[name="userAccount"]').val();
+    //         var password = $('input[name="password"]').val();
+    //         var email = $('input[name="email"]').val();
+    //
+    //         $.ajax({
+    //             type: 'POST',
+    //             url: '/user/register',
+    //             contentType: 'application/json',
+    //             data: JSON.stringify(
+    //                     {
+    //                         "userName": username,
+    //                         "userAccount": userAccount,
+    //                         "password": password,
+    //                         "email": email
+    //                     }),
+    //             success: function (response) {
+    //                 // alert(response.message);
+    //                 window.location.href = 'index.html';
+    //             },
+    //             error: function (error) {
+    //                 // register failed
+    //                 alert('Register failed!');
+    //             }
+    //         });
+    //     });
+    // });
 
 </script>
 </html>
