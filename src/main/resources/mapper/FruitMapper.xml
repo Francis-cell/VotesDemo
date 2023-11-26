@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace属性指定当前映射文件和哪个接口进行映射，需要标注包的完整路径接口-->
+<mapper namespace="com.zmr.topic.mapper.TopicMapper">
+    <!--自定义映射规则-->
+    <resultMap id="fruits" type="com.zmr.fruits.entity.Fruit">
+        <id column="ID" property="id"></id>
+        <result column="FRUIT_NAME" property="fruitName"></result>
+    </resultMap>
+
+    <!--当表的字段和类的对象的属性不一致时，来自定义查询结果集的映射规则-->
+    <select id="findAllFruits" resultMap="fruits">
+        SELECT ID, FRUIT_NAME FROM FRUITS;
+    </select>
+</mapper>
+

@@ -191,7 +191,7 @@ $(document).ready(async function () {
                         <p class="card-title"></p>
                         <div class="card-content">
                           <p class="card-content-detail"></p>
-                          <div class="btn btn__secondary"><p>Inner</p></div>
+                          <div class="btn btn__secondary"><p class="Inner">Inner</p></div>
                           <div class="card-content-footer"></div>
                         </div>
                     </div>
@@ -208,6 +208,8 @@ $(document).ready(async function () {
 
                 $(".main-content").addClass("expanded");
                 $target.addClass("clicked");
+
+                innerButtonClick($target.data("original-content"));
             }
             else {
                 // restore original content
@@ -307,6 +309,26 @@ $(document).ready(async function () {
         });
     }
 
+
+    /**
+     * This method will transfer when inner button is clicked.
+     */
+    function innerButtonClick(contentType) {
+        // inner button click event
+        $(".Inner").on("click", function (event) {
+            event.preventDefault();
+            sessionStorage.setItem("voteType", contentType);
+
+            // Fruit Click
+            if (contentType === "Fruit") {
+                // redirect to voteDetails
+                console.error("redirect to voteDetails!");
+            } else {
+                // other Click
+                console.error("当前不支持 Fruit 之外的操作！");
+            }
+        });
+    }
 
 
     /**
