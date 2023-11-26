@@ -26,4 +26,9 @@ public class LoginController {
     public String index(){
         return "index";
     }
+
+    @RequestMapping("/voteDetail")
+    public String voteDetail(){
+        return "voteDetail";
+    }
 }

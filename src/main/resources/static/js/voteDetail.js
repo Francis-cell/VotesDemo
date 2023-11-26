@@ -1,6 +1,17 @@
 $(document).ready(function () {
+    const userPicture = $(".userPicture");
+    const userName = $(".userName");
+    const userEmail = $(".userEmail");
+    const logout = $(".logout");
+
+
     // generate background pictures method
     generateBackgroundPictures();
+    // generate user information
+    generateUserInformation();
+
+    // register "logout" event.
+    logOut();
 
     /**
      * generate background pictures method
@@ -25,6 +36,34 @@ $(document).ready(function () {
                 + backgroundPictureUrl + (")"));
         }
     }
+
+
+    /**
+     * generate user information
+     */
+    function generateUserInformation() {
+        let userNameInner = sessionStorage.getItem("userName");
+        let userEmailInner = sessionStorage.getItem("userEmail");
+        let userPhotoInner = sessionStorage.getItem("userPhoto");
+
+        userName.text(userNameInner);
+        userEmail.text(userEmailInner);
+        userPicture.attr("src", userPhotoInner);
+    }
+
+
+    /**
+     * logOut
+     */
+    function logOut() {
+        logout.off("click").on("click", function (event) {
+            event.preventDefault();
+            // 退回登录页面
+            // location.replace("/myLogin");
+            window.location.href = "/myLogin";
+        });
+    }
+
 
     const detailsBtn = $(".details-btn");
     const voteBtn = $(".vote-btn");

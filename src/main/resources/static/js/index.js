@@ -46,8 +46,12 @@ $(document).ready(async function () {
                 let res = response.data;
                 userName.text(res.userName);
                 userEmail.text(res.email);
+                let userPhoto = generateUserPictureBySex(res.sex);
+                sessionStorage.setItem("userPhoto", userPhoto);
+                sessionStorage.setItem("userName", res.userName);
+                sessionStorage.setItem("userEmail", res.email);
                 // get user sex
-                userPicture.attr("src", generateUserPictureBySex(res.sex));
+                userPicture.attr("src", userPhoto);
             },
             error: function (response) {
                 // failed deal
@@ -198,8 +202,6 @@ $(document).ready(async function () {
                 `);
                 // set value
                 $(".card-title").text($target.data("original-content"));
-                // set action event
-                $(".btn").on("click", cardButtonClick)
                 // card-content-detail content
                 let topicClicked = topics.filter(item => {
                     return item.topicName === $target.data("original-content");
@@ -323,19 +325,11 @@ $(document).ready(async function () {
             if (contentType === "Fruit") {
                 // redirect to voteDetails
                 console.error("redirect to voteDetails!");
+                window.location.href = "/voteDetail";
             } else {
                 // other Click
                 console.error("当前不支持 Fruit 之外的操作！");
             }
         });
-    }
-
-
-    /**
-     * card inner button click event
-     */
-    function cardButtonClick(event) {
-        event.stopPropagation();
-        // redirect to a new page.
     }
 });
