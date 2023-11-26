@@ -195,7 +195,7 @@ $(document).ready(async function () {
                         <p class="card-title"></p>
                         <div class="card-content">
                           <p class="card-content-detail"></p>
-                          <div class="btn btn__secondary"><p class="Inner">Inner</p></div>
+                          <div class="btn btn__secondary innerBtn"><p class="Inner">Inner</p></div>
                           <div class="card-content-footer"></div>
                         </div>
                     </div>
@@ -317,7 +317,7 @@ $(document).ready(async function () {
      */
     function innerButtonClick(contentType) {
         // inner button click event
-        $(".Inner").on("click", function (event) {
+        $(".innerBtn").on("click", function (event) {
             event.preventDefault();
             sessionStorage.setItem("voteType", contentType);
 

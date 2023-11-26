@@ -1,14 +1,16 @@
-$(document).ready(function () {
+$(document).ready(async function () {
     const userPicture = $(".userPicture");
     const userName = $(".userName");
     const userEmail = $(".userEmail");
     const logout = $(".logout");
+    const voteContent = $(".vote-content");
 
-
-    // generate background pictures method
-    generateBackgroundPictures();
     // generate user information
     generateUserInformation();
+    // generate vote data
+    await generateVoteInfo();
+    // generate background pictures method
+    generateBackgroundPictures();
 
     // register "logout" event.
     logOut();
@@ -49,6 +51,57 @@ $(document).ready(function () {
         userName.text(userNameInner);
         userEmail.text(userEmailInner);
         userPicture.attr("src", userPhotoInner);
+    }
+
+
+    async function generateVoteInfo() {
+        let voteType = sessionStorage.getItem("voteType");
+        await $.ajax({
+            type: "POST",
+            url: "/fruits/findAllFruits",
+            success: function (response) {
+                // success deal
+                console.log("成功！", response);
+                let res = response.data;
+                let voteOptionNameList = [];
+                for (let i = 0; i < res.length; i++) {
+                    voteOptionNameList.push(res[i].fruitName);
+                }
+                console.error("成功之后返回的结果集：", voteOptionNameList);
+                generateVoteOptions(voteOptionNameList);
+            },
+            error: function (response) {
+                // failed deal
+                console.error("失败！", response);
+            }
+        });
+    }
+
+
+    /**
+     * generate vote options
+     */
+    function generateVoteOptions(voteOptions) {
+        // clear vote-content
+        voteContent.empty();
+        // generate vote options for loop
+        voteOptions.forEach(item => {
+            let newDiv = $(
+                '<div class="wrap main-div">' +
+                '<div class="container">' +
+                '<p>' + item + '</p>' +
+                '</div>' +
+                '<div class="overlay">' +
+                '<button class="btn details-btn">details</button>' +
+                '<button class="btn vote-btn">vote</button>' +
+                '</div>' +
+                '<div class="drawer">' +
+                '<p>' + 'Here is something about apple, you can learn sth more about it.' + '</p>' +
+                '</div>' +
+                '</div>'
+            )
+            voteContent.append(newDiv);
+        });
     }
 
 

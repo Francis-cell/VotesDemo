@@ -17,7 +17,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Fruit {
     /** id */
-    private Integer id;
+    private Integer fruitId;
     /** fruit name */
     private String fruitName;
 }
