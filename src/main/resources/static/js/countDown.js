@@ -24,7 +24,7 @@ $(document).ready(function () {
                 if (i-- !== 0) {
                     countdown();
                 } else {
-                    alert("倒计时结束！");
+                    console.error("倒计时结束！");
                 }
             }, 1000);
         }, 600);
