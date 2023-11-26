@@ -23,7 +23,8 @@ $(document).ready(async function () {
      * generate username and user email
      */
     async function generateUserInfo() {
-        let requestData = JSON.stringify({ "userAccount": 'wangZiDianXia'});
+        let userAccount = sessionStorage.getItem("userAccount");
+        let requestData = JSON.stringify({ "userAccount": userAccount});
         // let res = await requestHandler("/user/getUserInfo", requestData);
         await $.ajax({
             type: "POST",
