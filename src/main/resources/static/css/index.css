@@ -250,6 +250,18 @@ body {
 
 }
 
+/* =============================main footer============================ */
+.main-footer {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* main-footer button */
+.btn-footer {
+    margin-left: 32px;
+}
 
 /* =============================after button click============================ */
 /* total card inner */

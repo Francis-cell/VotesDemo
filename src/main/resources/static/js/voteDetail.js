@@ -4,6 +4,13 @@ $(document).ready(async function () {
     const userEmail = $(".userEmail");
     const logout = $(".logout");
     const voteContent = $(".vote-content");
+    const resetVoteContent = $(".reset");
+    const submitVoteResult = $(".submit");
+    // all vote options for the page
+    let voteOptionNameList = [];
+    // vote options have chose
+    let voteOptionsChose = [];
+
 
     // generate user information
     generateUserInformation();
@@ -63,7 +70,6 @@ $(document).ready(async function () {
                 // success deal
                 console.log("成功！", response);
                 let res = response.data;
-                let voteOptionNameList = [];
                 for (let i = 0; i < res.length; i++) {
                     voteOptionNameList.push(res[i].fruitName);
                 }
@@ -141,9 +147,16 @@ $(document).ready(async function () {
         let wrap = $(this).closest(".wrap");
         // 获取当前所在父级元素下的 draw 所对应的元素
         let currentSvg = wrap.find(".own-svg");
+        // 获取当前所在元素的名称
+        let pInner = wrap.find("p");
+        console.error("pInner:", pInner);
+        // let currentContent = wrap.find("p").text();
+        // console.error("currentContent: ", currentContent);
 
         // 如果不存在则添加对应的 SVG 图片，否则就进行删除操作
         if (currentSvg.length === 0) {
+            // add current vote option to the voteChose array
+            voteOptionsChose.push()
             // 在正中间添加自定义的SVG图片
             const svgContainer = $('<div class="own-svg"></div>');
             svgContainer.css({
@@ -161,4 +174,23 @@ $(document).ready(async function () {
             currentSvg.remove();
         }
     });
+
+
+
+    // main footer button click event
+    // reset result
+    function resetResult() {
+        resetVoteContent.on("click", function (event) {
+            event.preventDefault();
+            // clear all things have voted
+            generateVoteOptions(voteOptionNameList);
+        });
+    }
+
+    // submit result
+    function submitResult() {
+        submitVoteResult.on("click", function (event) {
+            event.preventDefault();
+        });
+    }
 })

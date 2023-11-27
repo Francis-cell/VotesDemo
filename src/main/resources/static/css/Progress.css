@@ -1,0 +1,303 @@
+.tasks {
+    background-color: #FFF;
+    /* 表示表格的边框要合并 */
+    border-collapse: collapse;
+    box-shadow: 0 0 10px #CECECE;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 2.5% 2.5% 6.5% 2.5%;
+    text-align: left;
+    width: 45%
+}
+
+.tasks thead {
+    color: #767676
+}
+
+.tasks thead tr th {
+    border-bottom: 1px solid #CECECE;
+    font-size: 1vw;
+    font-weight: normal;
+    padding: 5% 2% 2% 2%
+}
+
+.tasks tbody tr td {
+    padding: 2%;
+    border-bottom: 1px solid #CECECE;
+}
+
+.tasks tbody tr td a {
+    color: #1777D3;
+    text-decoration: none;
+    /* 表示视窗（viewport）的宽度的百分比。具体来说，1vw 等于视窗宽度的1% */
+    font-size: 1vw;
+    /* 会将元素内文本的字母全部转换为大写形式 */
+    text-transform: uppercase
+}
+
+/* 特定列是通过 :nth-of-type(2) 伪类选择的，表示选择同一行中的第二个 td 元素 */
+.tasks tbody .row-1 td:nth-of-type(2),
+.tasks tbody .row-2 td:nth-of-type(2),
+.tasks tbody .row-3 td:nth-of-type(2),
+.tasks tbody .row-4 td:nth-of-type(2),
+.tasks tbody .row-5 td:nth-of-type(2),
+.tasks tbody .row-6 td:nth-of-type(2) {
+    width: 20%
+}
+
+.tasks tbody tr td button {
+    color: #FFF;
+}
+
+.tasks tbody .row-1 td button {
+    background-color: #fd800a;
+    border: none;
+    font-size: 1vw;
+    padding: 0 6%
+}
+
+.tasks tbody .row-2 td button {
+    background-color: #7faf35;
+    border: none;
+    font-size: 1vw;
+    padding: 0 6%
+}
+
+.tasks tbody .row-3 td button {
+    background-color: #0e9cff;
+    border: none;
+    font-size: 1vw;
+    padding: 0 6%
+}
+
+.tasks tbody .row-4 td button {
+    background-color: #078d86;
+    border: none;
+    font-size: 1vw;
+    padding: 0 6%
+}
+
+.tasks tbody .row-5 td button {
+    background-color: #f82f35;
+    border: none;
+    font-size: 1vw;
+    padding: 0 6%
+}
+
+.tasks tbody .row-6 td button {
+    background-color: #078d86;
+    border: none;
+    font-size: 1vw;
+    padding: 0 6%
+}
+
+.tasks tbody tr td progress {
+    /* 取消其 WebKit 浏览器默认的外观 */
+    -webkit-appearance: none;
+}
+
+.tasks tbody tr td progress::-webkit-progress-bar {
+    background-color: #f3f3f3;
+    border-radius: 10px;
+    height: 40%;
+    margin-top: 3%
+}
+
+.tasks tbody .row-1 td progress::-webkit-progress-value {
+    background-color: #fd800a;
+    border-radius: 10px;
+}
+
+.tasks tbody .row-2 td progress::-webkit-progress-value {
+    background-color: #7faf35;
+    border-radius: 10px;
+}
+
+.tasks tbody .row-3 td progress::-webkit-progress-value {
+    background-color: #fd800a;
+    border-radius: 10px;
+}
+
+.tasks tbody .row-4 td progress::-webkit-progress-value,
+.tasks tbody .row-6 td progress::-webkit-progress-value {
+    background-color: #078d86;
+    border-radius: 10px;
+}
+
+.tasks tbody .row-5 td progress::-webkit-progress-value {
+    background-color: #f82f35;
+    border-radius: 10px;
+}
+
+.tasks tbody .row-1 td:nth-of-type(4),
+.tasks tbody .row-2 td:nth-of-type(4),
+.tasks tbody .row-3 td:nth-of-type(4),
+.tasks tbody .row-4 td:nth-of-type(4),
+.tasks tbody .row-5 td:nth-of-type(4),
+.tasks tbody .row-6 td:nth-of-type(4) {
+    color: #767676;
+    font-size: 12px
+}
+
+
+
+
+
+.statistics {
+    background-color: #FFF;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px #CECECE;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 2.5%;
+    width: 45%
+}
+
+.statistics tr th {
+    color: #767676;
+    font-size: 12px;
+    font-weight: normal;
+    padding: 0.5%;
+    text-align: right;
+    width: 15%
+}
+
+.statistics .head1 th {
+    font-size: 16px;
+    padding: 4%;
+    text-align: left
+}
+
+.statistics tr td {
+    border-right: 1px solid #f3f3f3;
+    border-left: 1px solid #f3f3f3;
+    font-size: 16px
+}
+
+.statistics .row1 td {
+    border: none
+}
+
+.statistics .row2 td {
+    border-top: 1px solid #f3f3f3
+}
+
+.statistics .row10 td {
+    border-bottom: 1px solid #f3f3f3
+}
+
+.statistics tr td ul {
+    list-style: none;
+    text-align: center
+}
+
+.statistics tr td ul li {
+    display: inline-block;
+    width: 10%
+}
+
+.statistics tr td .quarter1 li:first-of-type,
+.statistics tr td .quarter2 li:first-of-type,
+.statistics tr td .quarter3 li:first-of-type,
+.statistics tr td .quarter4 li:first-of-type {
+    background-color: #0e9cff;
+    color: #0e9cff
+}
+
+.statistics tr td .quarter1 li:nth-of-type(2),
+.statistics tr td .quarter2 li:nth-of-type(2),
+.statistics tr td .quarter3 li:nth-of-type(2),
+.statistics tr td .quarter4 li:nth-of-type(2) {
+    background-color: #fd800a;
+    color: #fd800a
+}
+
+.statistics tr td .quarter1 li:nth-of-type(3),
+.statistics tr td .quarter2 li:nth-of-type(3),
+.statistics tr td .quarter3 li:nth-of-type(3),
+.statistics tr td .quarter4 li:nth-of-type(3) {
+    background-color: #239825;
+    color: #239825
+}
+
+.statistics tr td .quarter1 li:nth-of-type(4),
+.statistics tr td .quarter2 li:nth-of-type(4),
+.statistics tr td .quarter3 li:nth-of-type(4),
+.statistics tr td .quarter4 li:nth-of-type(4) {
+    background-color: #f82f35;
+    color: #f82f35
+}
+
+.statistics tr td .quarter1 li:last-of-type,
+.statistics tr td .quarter2 li:last-of-type,
+.statistics tr td .quarter3 li:last-of-type,
+.statistics tr td .quarter4 li:last-of-type {
+    background-color: #8961a8;
+    color: #8961a8
+}
+
+.statistics tfoot tr td {
+    border: none;
+    color: #767676;
+    padding: 2%;
+    text-align: center
+}
+
+section {
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+
+
+
+
+
+/* -------------------------------------------- ----------------------------------------------------------- */
+/*body {*/
+/*    display: flex;*/
+/*    justify-content: space-around;*/
+/*    align-items: center;*/
+/*    height: 100vh;*/
+/*    margin: 0;*/
+/*}*/
+
+/*.percentage-bar {*/
+/*    float: left;*/
+/*    position: relative;*/
+/*    width: 200px;*/
+/*    height: 20px;*/
+/*    background-color: lightgray;*/
+/*    margin-bottom: 20px;*/
+/*}*/
+
+/*.percentage-bar::after {*/
+/*    content: attr(data-percentage) "% - " attr(data-people) " people";*/
+/*    position: absolute;*/
+/*    top: 50%;*/
+/*    transform: translateY(-50%);*/
+/*    white-space: nowrap;*/
+/*    transition: opacity 0.3s ease-in-out;*/
+/*}*/
+
+/*.bar-01 {*/
+/*    background-color: #0dcaf0;*/
+/*}*/
+
+/*.bar-02 {*/
+/*    background-color: #fad3a6;*/
+/*}*/
+
+/*.bar-03 {*/
+/*    background-color: #f6baba;*/
+/*}*/
+
+/*.processAll {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    width: 80%;*/
+/*    height: 100%;*/
+/*    color: white;*/
+/*    justify-content: center;*/
+/*    align-items: flex-start;*/
+/*}*/

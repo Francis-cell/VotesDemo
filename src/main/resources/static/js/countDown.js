@@ -6,7 +6,6 @@ $(document).ready(function () {
     // 初始的ten的值
     let oldTen = -1;
     function countdown(){
-        debugger;
         let ten = Math.floor(i / 10);
         let one = i % 10;
 
