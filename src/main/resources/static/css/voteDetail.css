@@ -17,7 +17,7 @@ body {
         wrap-reverse：子元素在多行上排列，但是反转方向，第一行在下方，第二行在上方，依此类推;
     */
     flex-wrap: wrap;
-    flex-basis: 500px;
+    flex-basis: 436px;
     justify-content: center;
     align-items: center;
     overflow-y: auto;

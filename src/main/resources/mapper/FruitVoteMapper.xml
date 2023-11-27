@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+        <!--namespace属性指定当前映射文件和哪个接口进行映射，需要标注包的完整路径接口-->
+<mapper namespace="com.zmr.fruits.mapper.FruitVoteMapper">
+<!--自定义映射规则-->
+<resultMap id="fruitVote" type="com.zmr.fruits.entity.FruitVote">
+    <id column="ID" property="id"></id>
+    <result column="FRUIT_ID" property="fruitId"></result>
+    <result column="FRUIT_NAME" property="fruitName"></result>
+    <result column="NUMBER_OF_VOTES" property="voteCount"></result>
+</resultMap>
+
+<!-- select all fruits and votes about them. -->
+<select id="findAllFruitsVote" resultMap="fruitVote">
+    SELECT FRUIT_ID, FRUIT_NAME, NUMBER_OF_VOTES FROM FRUITS_VOTES;
+</select>
+
+<!-- batch save or update fruit vote result. -->
+<insert id="saveOrUpdateFruitVoteResult" parameterType="java.util.List">
+    INSERT INTO FRUITS_VOTES (FRUIT_ID, FRUIT_NAME, NUMBER_OF_VOTES) VALUES
+    <foreach collection="list" item="fruitVote" separator=",">
+        (#{fruitVote.fruitId}, #{fruitVote.fruitName}, #{fruitVote.voteCount})
+    </foreach>
+    ON DUPLICATE KEY UPDATE NUMBER_OF_VOTES = VALUES(NUMBER_OF_VOTES);
+</insert>
+</mapper>

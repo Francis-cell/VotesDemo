@@ -12,15 +12,22 @@ $(document).ready(async function () {
     let voteOptionsChose = [];
 
 
-    // generate user information
+    // generate user information.
     generateUserInformation();
-    // generate vote data
+    // generate vote data.
     await generateVoteInfo();
-    // generate background pictures method
+    // generate background pictures method.
     generateBackgroundPictures();
+    // generate vote event.
+    voteEvent();
 
     // register "logout" event.
     logOut();
+    // register "reset" event.
+    resetResult();
+    // register "submit" event.
+    submitResult();
+
 
     /**
      * generate background pictures method
@@ -124,56 +131,60 @@ $(document).ready(async function () {
     }
 
 
-    const detailsBtn = $(".details-btn");
-    const voteBtn = $(".vote-btn");
+    /**
+     * some vote about event.
+     */
+    function voteEvent() {
+        const detailsBtn = $(".details-btn");
+        const voteBtn = $(".vote-btn");
+        // 显示抽屉
+        detailsBtn.on("click", function() {
+            // 找到最近的父级 .wrap 元素
+            let wrap = $(this).closest(".wrap");
+            // 获取当前所在父级元素下的 draw 所对应的元素
+            let currentDrawer = wrap.find(".drawer");
 
-    // 显示抽屉
-    detailsBtn.on("click", function() {
-        // 找到最近的父级 .wrap 元素
-        let wrap = $(this).closest(".wrap");
-        // 获取当前所在父级元素下的 draw 所对应的元素
-        let currentDrawer = wrap.find(".drawer");
+            if (currentDrawer.css("display") === "none") {
+                currentDrawer.css("display", "block");
+            } else {
+                currentDrawer.css("display", "none");
+            }
+        });
+        // 投票按钮点击事件
+        voteBtn.on("click", function() {
+            // 找到最近的父级 .wrap 元素
+            let wrap = $(this).closest(".wrap");
+            // 获取当前所在父级元素下的 draw 所对应的元素
+            let currentSvg = wrap.find(".own-svg");
+            // 获取当前所在元素的名称
+            let currentContent = wrap.find(".container p").text();
 
-        if (currentDrawer.css("display") === "none") {
-            currentDrawer.css("display", "block");
-        } else {
-            currentDrawer.css("display", "none");
-        }
-    });
+            // 如果不存在则添加对应的 SVG 图片，否则就进行删除操作
+            if (currentSvg.length === 0) {
+                // add current vote option to the voteChose array
+                voteOptionsChose.push(currentContent);
+                // 在正中间添加自定义的SVG图片
+                const svgContainer = $('<div class="own-svg"></div>');
+                svgContainer.css({
+                    "width": "100px",
+                    "height": "100px",
+                    "position": "absolute",
+                    "top": "50%",
+                    "left": "50%",
+                    "transform": "translate(-50%, -50%)"
+                });
+                wrap.append(svgContainer);
+                // after the div append to the page, add the css style to the 'own-svg' class
+                $(".own-svg").css('background-image','url("../svg/operate/ok.svg")');
+            } else {
+                let tmpIndex = voteOptionsChose.indexOf(currentContent);
+                voteOptionsChose.splice(tmpIndex, 1);
+                currentSvg.remove();
+            }
+        });
+    }
 
-    // 投票按钮点击事件
-    voteBtn.on("click", function() {
-        // 找到最近的父级 .wrap 元素
-        let wrap = $(this).closest(".wrap");
-        // 获取当前所在父级元素下的 draw 所对应的元素
-        let currentSvg = wrap.find(".own-svg");
-        // 获取当前所在元素的名称
-        let pInner = wrap.find("p");
-        console.error("pInner:", pInner);
-        // let currentContent = wrap.find("p").text();
-        // console.error("currentContent: ", currentContent);
 
-        // 如果不存在则添加对应的 SVG 图片，否则就进行删除操作
-        if (currentSvg.length === 0) {
-            // add current vote option to the voteChose array
-            voteOptionsChose.push()
-            // 在正中间添加自定义的SVG图片
-            const svgContainer = $('<div class="own-svg"></div>');
-            svgContainer.css({
-                "width": "100px",
-                "height": "100px",
-                "position": "absolute",
-                "top": "50%",
-                "left": "50%",
-                "transform": "translate(-50%, -50%)"
-            });
-            wrap.append(svgContainer);
-            // after the div append to the page, add the css style to the 'own-svg' class
-            $(".own-svg").css('background-image','url("../svg/operate/ok.svg")');
-        } else {
-            currentSvg.remove();
-        }
-    });
 
 
 
@@ -184,6 +195,10 @@ $(document).ready(async function () {
             event.preventDefault();
             // clear all things have voted
             generateVoteOptions(voteOptionNameList);
+            // generate background pictures method
+            generateBackgroundPictures();
+            // generate vote event.
+            voteEvent();
         });
     }
 
@@ -191,6 +206,18 @@ $(document).ready(async function () {
     function submitResult() {
         submitVoteResult.on("click", function (event) {
             event.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "/fruitsVote/saveOrUpdate",
+                contentType: 'application/json',
+                data: JSON.stringify(voteOptionsChose),
+                success: function (response) {
+                    console.error("请求成功！");
+                },
+                error: function (response) {
+                    console.error("请求失败！");
+                }
+            });
         });
     }
 })
