@@ -31,4 +31,9 @@ public class LoginController {
     public String voteDetail(){
         return "voteDetail";
     }
+
+    @RequestMapping("/voteResult")
+    public String voteResult(){
+        return "voteResult";
+    }
 }

@@ -204,20 +204,47 @@ $(document).ready(async function () {
 
     // submit result
     function submitResult() {
-        submitVoteResult.on("click", function (event) {
+        submitVoteResult.on("click", async function (event) {
             event.preventDefault();
-            $.ajax({
+            await $.ajax({
                 type: "POST",
                 url: "/fruitsVote/saveOrUpdate",
                 contentType: 'application/json',
                 data: JSON.stringify(voteOptionsChose),
-                success: function (response) {
+                success: async function (response) {
                     console.error("请求成功！");
+                    await userCountAdd();
+                    // redirect to the voteResult page
+                    window.location.href = "/voteResult";
                 },
                 error: function (response) {
                     console.error("请求失败！");
                 }
             });
+        });
+    }
+
+
+    // add user count for vote
+    async function userCountAdd() {
+        // get the vote topic
+        let voteTopic = sessionStorage.getItem("voteTopic");
+        let voteInfo = {
+            desc: voteTopic,
+            func: "count",
+            funcDetails: "0"
+        };
+        await $.ajax({
+            type: "POST",
+            url: "/voteInfo/userCountAdd",
+            contentType: 'application/json',
+            data: JSON.stringify(voteInfo),
+            success: function (response) {
+                console.error("请求成功！", response);
+            },
+            error: function (response) {
+                console.error("请求失败！");
+            }
         });
     }
 })

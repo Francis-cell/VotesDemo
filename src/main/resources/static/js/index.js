@@ -325,6 +325,8 @@ $(document).ready(async function () {
             if (contentType === "Fruit") {
                 // redirect to voteDetails
                 console.error("redirect to voteDetails!");
+                // put the vote topic into sessionStorage
+                sessionStorage.setItem("voteTopic", "Fruit");
                 window.location.href = "/voteDetail";
             } else {
                 // other Click

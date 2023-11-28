@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- BootStrap -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vote Result</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/DemoCss/voteResult.css}">
+    <script th:src="@{/JQuery/jquery-3.7.1.min.js}"></script>
+    <script th:src="@{/DemoJs/VoteResult.js}"></script>
+    <script th:src="@{/js/emojiAnimation.js}"></script>
+</head>
+<body>
+    <div id="index">
+        <!-- left to show login user and other information -->
+        <div id="sideBar">
+            <!-- user information -->
+            <div class="user">
+                <img class="userPicture" src="" alt="user picture">
+                <span class="userName"> userName </span>
+                <span class="userEmail"> user@example.com </span>
+            </div>
+
+            <!-- sidebar menu -->
+            <div class="sidebar-menu">
+                <!-- vote -->
+                <a href="#" class="sidebar-menu__link active" data-target="vote">vote</a>
+                <!-- logout -->
+                <a href="#" class="sidebar-menu__link" data-target="logout">logout</a>
+            </div>
+        </div>
+
+        <!-- main page -->
+        <div class="main">
+            <!-- main header -->
+            <div class="main-header">
+                <!-- main header title-->
+                <div class="main-header__title">
+                    <div class="main-header-title-show">The vote result of this topic. </div>
+                </div>
+            </div>
+            <!-- vote content -->
+            <div class="vote-content"></div>
+        </div>
+    </div>
+</body>
+</html>

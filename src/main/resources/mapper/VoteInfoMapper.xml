@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC
+        "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--namespace属性指定当前映射文件和哪个接口进行映射，需要标注包的完整路径接口-->
+<mapper namespace="com.zmr.topic.mapper.VoteInfoMapper">
+    <!--自定义映射规则-->
+    <resultMap id="voteInfos" type="com.zmr.topic.entity.VoteInfo">
+        <id column="ID" property="id"></id>
+        <result column="DESC" property="desc"></result>
+        <result column="FUNC" property="func"></result>
+        <result column="FUNC_DETAILS" property="funcDetails"></result>
+    </resultMap>
+    <insert id="insert">
+        INSERT INTO VOTES_INFO(`DESC`, `FUNC`, `FUNC_DETAILS`) values (#{desc},#{func}, #{funcDetails})
+    </insert>
+
+    <select id="findAllVoteInfos" resultMap="voteInfos">
+        SELECT ID, `DESC`, FUNC, FUNC_DETAILS FROM VOTES_INFO;
+    </select>
+
+    <delete id="deleteById">
+        DELETE FROM VOTES_INFO WHERE ID=#{Id}
+    </delete>
+
+    <update id="update">
+        UPDATE VOTES_INFO SET `DESC`=#{desc}, FUNC=#{func}, FUNC_DETAILS=#{funcDetails} where ID=#{Id}
+    </update>
+
+    <update id="userCountAdd">
+        UPDATE VOTES_INFO SET FUNC_DETAILS=#{funcDetails} where `DESC`=#{desc}
+    </update>
+
+    <select id="findAVoteInfoByDesc" resultMap="voteInfos">
+        SELECT ID, `DESC`, FUNC, FUNC_DETAILS FROM VOTES_INFO WHERE `DESC`=#{desc}
+    </select>
+</mapper>
+

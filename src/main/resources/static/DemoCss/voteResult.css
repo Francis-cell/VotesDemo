@@ -1,0 +1,178 @@
+body {
+    --background-color: hsl(180, 20%, 90%);
+}
+
+.main-header .main-header__title {
+    display: flex;
+    flex-direction: row;
+    height: 80px;
+}
+
+
+.vote-content {
+    display: flex;
+    /*
+        nowrap（默认值）：所有子元素在一行上排列，可能会溢出容器;
+        wrap：子元素在多行上排列，第一行在上方，第二行在下方，依此类推;
+        wrap-reverse：子元素在多行上排列，但是反转方向，第一行在下方，第二行在上方，依此类推;
+    */
+    flex-wrap: wrap;
+    flex-basis: 500px;
+    justify-content: center;
+    align-items: center;
+    overflow-y: auto;
+}
+
+.wrap {
+    margin: 2rem;
+    /*
+        flat（默认值）：子元素在进行 3D 变换时会被扁平化，不会保持其 3D 位置;
+        preserve-3d：子元素在进行 3D 变换时会保持其 3D 位置，不会被扁平化;
+    */
+    transform-style: preserve-3d;
+    /*
+        perspective(value)：设置元素的透视距离。透视距离决定了观察者与 3D 元素之间的距离，从而影响到透视效果。
+    */
+    transform: perspective(100rem);
+
+    cursor: pointer;
+}
+
+.container {
+    /* 变量的值 */
+    --rX: 0;
+    --rY: 0;
+    --bX: 50%;
+    --bY: 80%;
+
+    width: 40rem;
+    height: 7rem;
+    /*border: 1px solid var(--background-color);*/
+    border-radius: 1.6rem;
+    padding: 1rem 2rem 1rem 2rem;
+
+    display: flex;
+    align-items: flex-end;
+    position: relative;
+
+    background: linear-gradient(hsla(0, 0%, 100%, .1), hsla(0, 0%, 100%, .1)); /* url("../pictures/03.jpg"); */
+    background-position: var(--bX) var(--bY);
+    background-size: 40rem auto;
+    box-shadow: 0 0 3rem .5rem hsla(0, 0%, 0%, .2);
+
+    transition: transform .6s 1s;
+}
+
+.container--active {
+    transition: none;
+}
+
+.container p {
+    color: hsla(0, 0%, 100%, .6);
+    font-size: 1.5rem;
+}
+
+.abs-site-link {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    color: hsla(0, 0%, 0%, .6);
+    font-size: 1.6rem;
+}
+
+
+/* ============================= wrap ============================ */
+/* generate the filter animation */
+@keyframes filterAnimation  {
+    0% {
+        filter: hue-rotate(0deg) saturate(140%);
+    }
+
+    10% {
+        filter: hue-rotate(32deg) saturate(140%);
+    }
+
+    20% {
+        filter: hue-rotate(64deg) saturate(140%);
+    }
+
+    30% {
+        filter: hue-rotate(96deg) saturate(140%);
+    }
+
+    40% {
+        filter: hue-rotate(128deg) saturate(140%);
+    }
+
+    50% {
+        filter: hue-rotate(160deg) saturate(140%);
+    }
+
+    60% {
+        filter: hue-rotate(128deg) saturate(140%);
+    }
+
+    70% {
+        filter: hue-rotate(96deg) saturate(140%);
+    }
+
+    80% {
+        filter: hue-rotate(64deg) saturate(140%);
+    }
+
+    90% {
+        filter: hue-rotate(32deg) saturate(140%);
+    }
+
+    100% {
+        filter: hue-rotate(0deg) saturate(140%);
+    }
+}
+
+.wrap:hover .container {
+    transition: opacity 0.6s;
+    animation: filterAnimation 5s infinite;
+}
+
+
+@keyframes slideIn {
+    from {
+        width: 0;
+    }
+    to {
+        width: 80%;
+    }
+}
+
+.progress-container {
+    /* 变量的值 */
+    --rX: 0;
+    --rY: 0;
+    --bX: 50%;
+    --bY: 80%;
+
+    width: 32rem;
+    height: 7rem;
+    border-radius: 1.6rem;
+    padding: 1rem 2rem 1rem 2rem;
+    font-size: 20px;
+    color: #ffffff;
+    background-color: #9d9d9d;
+    box-shadow: 0 0 3rem .5rem hsla(0, 0%, 0%, .2);
+    animation: slideIn 1s ease-in;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 20%;
+    opacity: 0.7;
+    z-index: 1;
+    background-position: var(--bX) var(--bY);
+    background-size: 40rem auto;
+
+    text-align: center;
+    transition: transform .1s .5s;
+}
