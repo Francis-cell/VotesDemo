@@ -65,4 +65,14 @@ public class VoteInfoController {
             return ResponseResult.fail(400, "User count add failed.");
         }
     }
+
+    @PostMapping("/findAVoteInfoByDesc")
+    public ResponseResult findAVoteInfoByDesc(@RequestBody String desc) {
+        VoteInfo aVoteInfoByDesc = voteInfoService.findAVoteInfoByDesc(desc);
+        if (aVoteInfoByDesc == null) {
+            return ResponseResult.fail(400, "It doesn't exist for the vote info you want to find!");
+        } else {
+            return ResponseResult.success(aVoteInfoByDesc);
+        }
+    }
 }

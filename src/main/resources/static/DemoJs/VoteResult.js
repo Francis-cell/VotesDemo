@@ -1,8 +1,12 @@
-$(document).ready(function () {
+$(document).ready(async function () {
     const userPicture = $(".userPicture");
     const userName = $(".userName");
     const userEmail = $(".userEmail");
     const logout = $(".logout");
+    // total count for this vote topic.
+    let totalCount  = 0;
+    // vote data
+    let voteData = null;
 
 
     // generate user information.
@@ -12,6 +16,11 @@ $(document).ready(function () {
 
     // register "logout" event.
     logOut();
+
+    // init the total count
+    await getAllVoteCount();
+    // init vote data
+    await initVoteData();
 
 
 
@@ -71,7 +80,49 @@ $(document).ready(function () {
     async function initVoteData(type) {
         await $.ajax({
             type: 'POST',
-            url: "/fruitsVote/",
+            url: "/fruitsVote/findAll",
+            contentType: "application/json",
+            success: function (response) {
+                console.error("请求成功！", response);
+                if (totalCount != 0) {
+                    voteData = response.data.map(item => {
+                        return {
+                            percent: Number((item.voteCount) / totalCount).toFixed(2) * 100 + "%",
+                            content: item.fruitName
+                        }
+                    });
+                    console.error("最终的比例数据为：", voteData);
+                } else {
+                    console.error("total count can't be zero!");
+                }
+            },
+            error: function (response) {
+                console.error("请求失败！", response);
+            }
         });
+    }
+
+    async function getAllVoteCount() {
+        let voteTopic = sessionStorage.getItem("voteTopic");
+        await $.ajax({
+            type: 'POST',
+            url: "/voteInfo/findAVoteInfoByDesc",
+            contentType: "application/json",
+            data: voteTopic,
+            success: function (response) {
+                console.error("请求成功！", response);
+                totalCount = Number(response.data.funcDetails);
+            },
+            error: function (response) {
+                console.error("请求失败！", response);
+            }
+        });
+    }
+
+    /**
+     * deal vote data.
+     */
+    function dealVoteData(voteData) {
+
     }
 });

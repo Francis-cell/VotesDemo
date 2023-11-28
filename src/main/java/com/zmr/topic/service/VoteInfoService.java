@@ -25,4 +25,7 @@ public interface VoteInfoService {
 
     /** add the user count for the vote info. */
     Integer userCountAdd(VoteInfo voteInfo);
+
+    /** find the vote info by desc. */
+    VoteInfo findAVoteInfoByDesc(String desc);
 }

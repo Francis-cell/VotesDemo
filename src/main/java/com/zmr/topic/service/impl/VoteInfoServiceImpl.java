@@ -60,4 +60,9 @@ public class VoteInfoServiceImpl implements VoteInfoService {
         }
         return -1;
     }
+
+    @Override
+    public VoteInfo findAVoteInfoByDesc(String desc) {
+        return voteInfoMapper.findAVoteInfoByDesc(desc);
+    }
 }
