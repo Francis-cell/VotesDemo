@@ -12,6 +12,11 @@ $(document).ready(async function () {
 
     // register "logout" event.
     logOut();
+    // init the total count
+    await getAllVoteCount();
+    // init vote data
+    await initVoteData();
+
     // generate user information.
     generateUserInformation();
     // generate vote percent.
@@ -19,10 +24,6 @@ $(document).ready(async function () {
     // generate background pictures method
     generateBackgroundPictures();
 
-    // init the total count
-    await getAllVoteCount();
-    // init vote data
-    await initVoteData();
 
     /**
      * generate background pictures method.
@@ -64,23 +65,24 @@ $(document).ready(async function () {
      * generate vote percent.
      */
     function generateVotePercent() {
-        let dynamicData  = [
-            { percent: "10%", content: "Apple" },
-            { percent: "12%", content: "BlueBerry" },
-            { percent: "52%", content: "Banana" },
-            { percent: "3%", content: "WaterMelon" },
-            { percent: "2%", content: "Strawberry" },
-            { percent: "1%", content: "1" },
-            { percent: "12%", content: "2" },
-            { percent: "10%", content: "3" },
-            { percent: "5%", content: "4" },
-            { percent: "6%", content: "5" },
-            { percent: "100%", content: "6" },
-            { percent: "28%", content: "7" },
-            { percent: "90%", content: "8" },
-            { percent: "12%", content: "9" },
-            { percent: "21%", content: "10" }
-        ];
+        console.error("dynamicData:", dynamicData);
+        // let dynamicData  = [
+        //     { percent: "10%", content: "Apple" },
+        //     { percent: "12%", content: "BlueBerry" },
+        //     { percent: "52%", content: "Banana" },
+        //     { percent: "3%", content: "WaterMelon" },
+        //     { percent: "2%", content: "Strawberry" },
+        //     { percent: "1%", content: "1" },
+        //     { percent: "12%", content: "2" },
+        //     { percent: "10%", content: "3" },
+        //     { percent: "5%", content: "4" },
+        //     { percent: "6%", content: "5" },
+        //     { percent: "100%", content: "6" },
+        //     { percent: "28%", content: "7" },
+        //     { percent: "90%", content: "8" },
+        //     { percent: "12%", content: "9" },
+        //     { percent: "21%", content: "10" }
+        // ];
         // generate inner elements for loop.
         dynamicData.forEach(function(data, index) {
             debugger;
@@ -130,7 +132,7 @@ $(document).ready(async function () {
                 .css('color', '#000000')
 
             // add text to div elements
-            if (Number(data.percent.slice(0, -1) <= 5)) {
+            if (Number(data.percent.slice(0, -1) < 10)) {
                 notChooseContainer.text(data.percent);
             } else {
                 processContainer.text(data.percent);
@@ -200,7 +202,7 @@ $(document).ready(async function () {
                 if (totalCount != 0) {
                     dynamicData = response.data.map(item => {
                         return {
-                            percent: Number((item.voteCount) / totalCount).toFixed(2) * 100 + "%",
+                            percent: (Number((item.voteCount) / totalCount).toFixed(2) * 100).toFixed(2) + "%",
                             content: item.fruitName
                         }
                     });
