@@ -118,11 +118,4 @@ $(document).ready(async function () {
             }
         });
     }
-
-    /**
-     * deal vote data.
-     */
-    function dealVoteData(voteData) {
-
-    }
 });

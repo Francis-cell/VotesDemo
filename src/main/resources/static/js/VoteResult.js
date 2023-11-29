@@ -1,11 +1,28 @@
-$(document).ready(function () {
+$(document).ready(async function () {
+    const userPicture = $(".userPicture");
+    const userName = $(".userName");
+    const userEmail = $(".userEmail");
+    const logout = $(".logout");
     let voteContent = $(".vote-content");
-    let wraps = $(".wrap");
 
+    // total count for this vote topic.
+    let totalCount  = 0;
+    // vote data
+    let dynamicData = null;
+
+    // register "logout" event.
+    logOut();
+    // generate user information.
+    generateUserInformation();
     // generate vote percent.
     generateVotePercent();
     // generate background pictures method
     generateBackgroundPictures();
+
+    // init the total count
+    await getAllVoteCount();
+    // init vote data
+    await initVoteData();
 
     /**
      * generate background pictures method.
@@ -29,6 +46,18 @@ $(document).ready(function () {
             $(containerList[i]).css('background-image',"url(" + backgroundPictureFolderPath
                 + backgroundPictureUrl + (")"));
         }
+    }
+
+    /**
+     * logOut
+     */
+    function logOut() {
+        logout.off("click").on("click", function (event) {
+            event.preventDefault();
+            // 退回登录页面
+            // location.replace("/myLogin");
+            window.location.href = "/myLogin";
+        });
     }
 
     /**
@@ -138,10 +167,68 @@ $(document).ready(function () {
         return colorLists[randomIndex];
     }
 
+    /**
+     * generate user information
+     */
+    function generateUserInformation() {
+        let userNameInner = sessionStorage.getItem("userName");
+        let userEmailInner = sessionStorage.getItem("userEmail");
+        let userPhotoInner = sessionStorage.getItem("userPhoto");
+
+        userName.text(userNameInner);
+        userEmail.text(userEmailInner);
+        userPicture.attr("src", userPhotoInner);
+    }
+
     // 判断一个元素的数据类型
     function typeOf(obj) {
         let res = Object.prototype.toString.call(obj).split(' ')[1];
         res = res.substring(0, res.length - 1).toLowerCase();
         return res;
+    }
+
+    /**
+     * Init vote about data.
+     */
+    async function initVoteData(type) {
+        await $.ajax({
+            type: 'POST',
+            url: "/fruitsVote/findAll",
+            contentType: "application/json",
+            success: function (response) {
+                console.error("请求成功！", response);
+                if (totalCount != 0) {
+                    dynamicData = response.data.map(item => {
+                        return {
+                            percent: Number((item.voteCount) / totalCount).toFixed(2) * 100 + "%",
+                            content: item.fruitName
+                        }
+                    });
+                    console.error("最终的比例数据为：", dynamicData);
+                } else {
+                    console.error("total count can't be zero!");
+                }
+            },
+            error: function (response) {
+                console.error("请求失败！", response);
+            }
+        });
+    }
+
+    async function getAllVoteCount() {
+        let voteTopic = sessionStorage.getItem("voteTopic");
+        await $.ajax({
+            type: 'POST',
+            url: "/voteInfo/findAVoteInfoByDesc",
+            contentType: "application/json",
+            data: voteTopic,
+            success: function (response) {
+                console.error("请求成功！", response);
+                totalCount = Number(response.data.funcDetails);
+            },
+            error: function (response) {
+                console.error("请求失败！", response);
+            }
+        });
     }
 });
