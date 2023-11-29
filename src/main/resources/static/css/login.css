@@ -168,7 +168,11 @@ footer a, footer a:link {
   text-decoration: none;
 }
 
-.ml94{
+.ml94 {
     margin-left: 94px;
+
+    @media (max-width: 480px) {
+        margin-left: 80px;
+    }
 }
  

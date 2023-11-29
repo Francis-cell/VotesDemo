@@ -195,7 +195,7 @@ $(document).ready(async function () {
                         <p class="card-title"></p>
                         <div class="card-content">
                           <p class="card-content-detail"></p>
-                          <div class="btn btn__secondary innerBtn"><p class="Inner">Inner</p></div>
+                          <button class="btn-footer custom-button btn-12 innerBtn"><span>Click!</span><span>Inner</span></button>
                           <div class="card-content-footer"></div>
                         </div>
                     </div>

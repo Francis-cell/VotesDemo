@@ -2,17 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- BootStrap -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width">
     <title>Vote Result</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
     <link rel="stylesheet" type="text/css" th:href="@{/css/voteResult.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/BootStrap/bootstrap.min.css}">
     <script th:src="@{/JQuery/jquery-3.7.1.min.js}"></script>
+    <script th:src="@{/BootStrap/popper.min.js}"></script>
+    <script th:src="@{/BootStrap/bootstrap.min.js}"></script>
     <script th:src="@{/js/VoteResult.js}"></script>
     <script th:src="@{/js/emojiAnimation.js}"></script>
 </head>
 <body>
-    <div id="index">
+    <div id="index" class="container-fluid">
         <!-- left to show login user and other information -->
         <div id="sideBar">
             <!-- user information -->

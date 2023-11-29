@@ -21,6 +21,10 @@ body {
     justify-content: center;
     align-items: center;
     overflow-y: auto;
+
+    @media (min-width: 480px) {
+        display: block;
+    }
 }
 
 .wrap {
@@ -71,59 +75,14 @@ body {
     transition: transform .6s 1s;
 }
 
-/*.container::before,*/
-/*.container::after {*/
-/*    content: "";*/
-
-/*    width: 2rem;*/
-/*    height: 2rem;*/
-/*    border: 1px solid #fff;*/
-
-/*    position: absolute;*/
-/*    z-index: 2;*/
-
-/*    opacity: .3;*/
-/*    transition: .3s;*/
-/*}*/
-
-/*.container::before {*/
-/*    top: 2rem;*/
-/*    right: 2rem;*/
-
-/*    border-bottom-width: 0;*/
-/*    border-left-width: 0;*/
-/*}*/
-
-/*.container::after {*/
-/*    bottom: 2rem;*/
-/*    left: 2rem;*/
-
-/*    border-top-width: 0;*/
-/*    border-right-width: 0;*/
-/*}*/
-
 .container--active {
     transition: none;
-}
-
-.container--2 {
-    /*filter: hue-rotate(80deg) saturate(140%);*/
-}
-
-.container--3 {
-    /*filter: hue-rotate(160deg) saturate(140%);*/
 }
 
 .container p {
     color: hsla(0, 0%, 100%, .6);
     font-size: 1.5rem;
 }
-
-/*.wrap:hover .container::before,*/
-/*.wrap:hover .container::after {*/
-/*    width: calc(100% - 6rem);*/
-/*    height: calc(100% - 6rem);*/
-/*}*/
 
 .abs-site-link {
     position: fixed;
@@ -193,6 +152,13 @@ body {
     transition: opacity 0.6s;
 }
 
+.wrap:focus .overlay {
+    @media (min-width: 480px) {
+        background: #55abed;
+        color: #ffffff;
+    }
+}
+
 .wrap .drawer {
     display: none;
     color: black;
@@ -200,6 +166,11 @@ body {
     width: 348px;
     height: 112px;
     z-index: 2;
+
+    @media (min-width: 480px) {
+        width: 180px;
+        font-size: 13px;
+    }
 }
 
 /* add button style */
@@ -213,6 +184,12 @@ body {
     flex-direction: row;
     /* 用于设置布局容器中子元素之间间隙的属性 */
     gap: 20px;
+
+    @media (min-width: 480px) {
+        flex-direction: column;
+        gap: 10px;
+        right: 20px;
+    }
 }
 
 /* add btn style */
@@ -223,6 +200,11 @@ body {
     color: #FFFFFF;
     border: none;
     border-radius: 10px;
+
+    @media (min-width: 480px) {
+        color: #000000;
+        font-size: 15px;
+    }
 }
 
 .btn:hover {

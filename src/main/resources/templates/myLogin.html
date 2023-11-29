@@ -2,14 +2,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
     <title>Log in</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/BootStrap/bootstrap.min.css}">
     <script th:src="@{/JQuery/jquery-3.7.1.min.js}"></script>
+    <script th:src="@{/BootStrap/popper.min.js}"></script>
+    <script th:src="@{/BootStrap/bootstrap.min.js}"></script>
     <script th:src="@{/js/login.js}"></script>
     <script th:src="@{/js/emojiAnimation.js}"></script>
 </head>
 <body>
-<div class="wrapper">
+<div class="wrapper container-fluid">
     <form class="login" th:action="@{/user/login}" method="post">
         <p class="title">Log in</p>
 <!--        <div th:text="${SPRING_SECURITY_LAST_EXCEPTION}"></div>-->

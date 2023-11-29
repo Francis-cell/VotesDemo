@@ -21,6 +21,10 @@ body {
     justify-content: center;
     align-items: center;
     overflow-y: auto;
+
+    @media (min-width: 480px) {
+        display: block;
+    }
 }
 
 .wrap {

@@ -26,7 +26,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 //.addFilterBefore(new JsonAuthenticationFilter(authenticationManager()), UsernamePasswordAuthenticationFilter.class)
                 .authorizeRequests()
-                    .antMatchers("/html/**", "/css/**", "/js/**", "/JQuery/**", "/pictures/**", "/templates/**")
+                    .antMatchers("/html/**", "/css/**", "/js/**", "/BootStrap/**", "/JQuery/**", "/pictures/**", "/templates/**")
                     .permitAll()
                     .antMatchers("/login.html", "/register.html")
                     .permitAll()

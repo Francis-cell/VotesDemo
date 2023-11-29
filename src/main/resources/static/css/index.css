@@ -88,6 +88,10 @@ body {
     @media (max-width: 480px) {
         display: none;
     }
+
+    @media (min-width: 481px) {
+        display: flex;
+    }
 }
 
 .sidebar-menu .sidebar-menu__link {
@@ -230,6 +234,14 @@ body {
     z-index: 2;
     transition: 0.6s;
     margin: 21px 0 0 61px;
+    
+    @media (min-width: 480px) {
+        border-radius: 50px;
+        width: 300px;
+        height: 350px;
+        margin: 50px 0 0 50px;
+        font-size: 25px;
+    }
 }
 
 .card.active {
@@ -272,11 +284,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    @media (min-width: 480px) {
+        margin-left: 10px;
+    }
 }
 
 /* main-footer button */
 .btn-footer {
-    margin-left: 32px;
+
 }
 
 /* =============================after button click============================ */
@@ -285,6 +301,15 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
+    width: 490px;
+    
+    @media (min-width: 480px) {
+        color: black;
+    }
+
+    @media (max-width: 481px) {
+        color: white;
+    }
 }
 /* card title */
 .card-title {
@@ -298,6 +323,11 @@ body {
     flex: 3;
     display: flex;
     flex-direction: column;
+
+    @media (min-width: 480px) {
+        justify-content: center;
+        align-items: center;
+    }
 }
 
 /* card content detail */
@@ -306,6 +336,10 @@ body {
     font-weight: lighter;
     font-size: 15px;
     flex: 2;
+
+    @media (min-width: 480px) {
+        width: 250px;
+    }
 }
 
 /* action button */
@@ -336,57 +370,4 @@ body {
 ::-webkit-scrollbar-thumb {
     background: rgba(33, 33, 33, 0.3);
     border-radius: 0.5em;
-}
-
-
-/* ---------------------------Button styles--------------------------- */
-.btn {
-    width: 10em;
-    height: 3em;
-    border-radius: 1em;
-    box-shadow: .3rem .3rem .6rem #c8d0e7;
-    justify-self: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: .3s case;
-    background-color: #b1ffff;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.btn__secondary {
-    grid-column: 1 / 2;
-    grid-row: 5 / 6;
-    color: #ffffff;
-}
-
-.btn__secondary:hover {
-    color: #6662c4;
-}
-
-.btn__secondary:active {
-    box-shadow: inset.2rem -.2rem .5rem #FFFFFF, inset .2rem .2rem .5rem #c8d0e7;
-}
-
-
-
-.card-1 {
-    background-color: #4ab0cb;
-}
-.card-2 {
-    background-color: #51e79c;
-}
-.card-3 {
-    background-color: #cec561;
-}
-.card-4 {
-    background-color: #5d67ee;
-}
-.card-5 {
-    background-color: #d74ee7;
-}
-.card-6 {
-    background-color: #bb6f47;
 }

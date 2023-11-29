@@ -2,14 +2,19 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
     <title>Index page</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/common.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/BootStrap/bootstrap.min.css}">
     <script th:src="@{/JQuery/jquery-3.7.1.min.js}"></script>
+    <script th:src="@{/BootStrap/popper.min.js}"></script>
+    <script th:src="@{/BootStrap/bootstrap.min.js}"></script>
     <script th:src="@{/js/index.js}"></script>
     <script th:src="@{/js/emojiAnimation.js}"></script>
 </head>
 <body>
-    <div id="index">
+    <div id="index" class="container-fluid">
         <!-- left to show login user and other information -->
         <div id="sideBar">
             <!-- user information -->

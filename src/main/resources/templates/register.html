@@ -2,14 +2,18 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
     <title>register</title>
     <link rel="stylesheet" type="text/css" th:href="@{/css/login.css}">
-    <script th:src="@{/JQuery/jquery.min.js}"></script>
+    <link rel="stylesheet" type="text/css" th:href="@{/BootStrap/bootstrap.min.css}">
+    <script th:src="@{/JQuery/jquery-3.7.1.min.js}"></script>
+    <script th:src="@{/BootStrap/popper.min.js}"></script>
+    <script th:src="@{/BootStrap/bootstrap.min.js}"></script>
     <script th:src="@{/js/register.js}"></script>
     <script th:src="@{/js/emojiAnimation.js}"></script>
 </head>
 <body>
-<div class="wrapper">
+<div class="wrapper container-fluid">
     <form class="login" method="post">
         <p class="title">Register</p>
         <label for="username" style="font-size: 14px;">userName</label>
@@ -29,7 +33,7 @@
             <option value="girl">girl</option>
         </select>
         <i class="fa fa-key"></i>
-        <a th:href="@{/login.html}">login</a>
+        <a th:href="@{/myLogin}">login</a>
         <button type="submit">
             <i class="spinner"></i>
             <span class="state" name="register">register</span>
